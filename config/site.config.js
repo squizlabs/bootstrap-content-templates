@@ -9,13 +9,13 @@ if (!ROOT) {
 
 const config = {
   // Your website's name, used for favicon meta tags
-  site_name: 'Static Site Boilerplate',
+  site_name: 'Bootstrap Content Templates',
 
   // Your website's description, used for favicon meta tags
-  site_description: 'A modern boilerplate for static website development',
+  site_description: 'An extension for Squiz Matrix that enables the ability to easily create enhanced and much more user intuitive Content Templates using Bootstrap 4 and FontAwesome 5.',
 
   // Your website's URL, used for sitemap
-  site_url: 'http://staticsiteboilerplate.com',
+  site_url: 'https://matrix.squiz.net',
 
   // Google Analytics tracking ID (leave blank to disable)
   googleAnalyticsUA: '',
