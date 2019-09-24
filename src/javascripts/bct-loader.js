@@ -1,14 +1,18 @@
-function iniCtWrappers(){
-    $('.sq-ct-wrapper').not('.initialised').each(function(){
-        iniCt(this);
+function iniBctWrappers(){
+    //find all bct wrappers on the screen and initialise them with the bct plugin
+    $('.bct-wrapper').not('.initialised').each(function(){
+        iniBct(this);
     });
+    //add class to the body to indicate that we have initialised the bct plugin
+    $('body').addClass('bct');
 }
 
 //load the required CSS and JS into the head
-if(document.getElementById('sq-ct-js') == undefined){
+if(document.getElementById('bct-js') == undefined){
+    
     //add the JS to the head
     var s = document.createElement('script');
-    s.id = 'sq-ct-js';
+    s.id = 'bct-js';
     s.src = 'https://matrix.squiz.net/__data/assets/js_file/0016/25315/matrix-bootstrap.min.js'; // bootstrap.js
     document.head.appendChild(s);
     
@@ -17,8 +21,12 @@ if(document.getElementById('sq-ct-js') == undefined){
     document.head.appendChild(s2);
     
     var s3 = document.createElement('script');
-    s3onload = 'iniCtWrappers();';
-    s3.src = 'https://matrix.squiz.net/__data/assets/js_file/0016/25360/sq-ct.js?v='+Math.random(); // sq-ct.js
+    s3.onload = function(){
+        setTimeout(function(){
+            iniBctWrappers();
+        }, 50);
+    }
+    s3.src = 'https://matrix.squiz.net/__data/assets/js_file/0016/25360/bct.js?v='+Math.random(); // sq-ct.js
     document.head.appendChild(s3);
     
     //add the CSS to the head
@@ -40,12 +48,18 @@ if(document.getElementById('sq-ct-js') == undefined){
     
     var c4 = document.createElement('link');
     c4.rel = 'stylesheet';
-    c4.href = 'https://matrix.squiz.net/__data/assets/css_file/0015/25341/sq-ct.css?v='+Math.random(); // sq-ct.css
+    c4.href = 'https://matrix.squiz.net/__data/assets/css_file/0015/25341/bct.css?v='+Math.random(); // sq-ct.css
     document.head.appendChild(c4);
     
-    $('body').addClass('sq-ct');
+}else{
+    
+    //CSS and JS is already loaded, we just need to initialise the containers
+    setTimeout(function(){
+        if($('body').hasClass('bct')){
+            iniBctWrappers();
+        }
+    }, 50);
+    
 }
 
-setTimeout(function(){
-    iniCtWrappers();
-}, 100);
+

@@ -1,0 +1,265 @@
+/* Metadata tabs */
+.bct-tabs .nav-tabs{
+    background-color: #f2f7fd;
+    color: #30425b;
+    font-weight: bold;
+}
+.bct-tab-pane{
+    display: none;
+}
+.bct-tab-pane.active{
+    display: block;
+}
+
+/* Matrix Admin & Edit+ overwrites */
+.plus .content_type_wysiwyg .mbs p,
+.plus .content_type_wysiwyg .mbs a, 
+.plus .content_type_wysiwyg .mbs a:visited{
+    color: inherit;
+}
+
+
+/* Edit content screen */
+#ees_screenContentWrapper,
+#ees_screenMenuList{
+    position: relative;
+    transition: left 0.3s;
+    left: 0;
+}
+.bct-metadata-open #ees_screenContentWrapper,
+.bct-metadata-open #ees_screenMenuList{
+    left: -300px;
+}
+
+/* Content template wrapper */
+.bct-wrapper{
+    position: relative;
+}
+
+/* Content template metadata sidepanel */
+.bct-metadata{
+    opacity: 1;
+    background-color: #fff;
+    max-width: 600px;
+    width: 600px;
+    min-height: 300px;
+    height: 90vh;
+    position: fixed;
+    right: -800px;
+    top: 60px;
+    border-radius: 4px;
+    z-index: 999;
+    pointer-events: auto;
+    cursor: auto;
+    visibility: visible;
+    box-shadow: 1px 1px 8px #75757580;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: right 0.3s;
+}
+.bct-metadata.open{
+    right: 10px;
+}
+
+/* Metadata sidepanel inner */
+.bct-metadata #ees_editMetadata{
+    width: 600px !important;
+    overflow: auto;
+    position: relative;
+    height: 100%;
+    min-height: calc(90vh - 30px);
+}
+
+.bct-metadata .cellData{
+    width: 75% !important;
+    padding-left: 112px !important;
+}
+
+/* Metadata sidepanel sections */
+.bct-metadata .metadata > h4{
+    /*cursor: pointer;*/
+    margin: 0;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    background: #fafafa;
+}
+.bct-metadata .editSection{
+    /*height: 0;
+    overflow: hidden;*/
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+/*
+.bct-metadata .metadata > h4:hover{
+    background: #f2f2f2;
+}
+.bct-metadata .editSection.open{
+    height: auto;
+    overflow: visible;
+}
+*/
+.bct-metadata .editSection .row{
+    border-bottom: none;
+    overflow: visible;
+}
+.bct-metadata .editSection .cellData{
+    background: none;
+}
+
+/* Metadata sidepanel toggle button */
+.bct-metadata-toggle{
+    background: url(/__lib/web/images/icons/edit_mode.png) #fafafa no-repeat 50% 50%;
+    display: block;
+    padding: 6px 6px 7px 7px;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    right: -40px;
+    top: 16px;
+    border: 1px solid #dadada;
+    text-align: center;
+}
+.bct-metadata-toggle:hover {
+    background-color: #ffffff;
+}
+.bct-metadata-toggle.active {
+    background-color: #8bc3ff;
+    border-color: #61adff;
+}
+.bct-metadata-toggle.active:hover {
+    background-color: #abd3ff;
+}
+
+/* Metadata sidepanel close button */
+.bct-metadata-close {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 5px;
+    right: 20px;
+    background: #8a95a7;
+    z-index: 1001;
+    border-radius: 10px;
+    margin: 5px;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: middle;
+    line-height: 20px;
+    cursor: pointer;
+}
+.bct-metadata-close:hover {
+  background: #585f6a;
+}
+
+/* Wysiwyg areas */
+.bct-wysiwyg{
+    border: 1px solid transparent;
+}
+.bct-wysiwyg:hover,
+.bct-wysiwyg:focus{
+    border: 1px dashed #ccc;
+}
+.bct-wysiwyg .htmlarea-div.bodycopy_content:empty:after,
+.bct-wysiwyg .htmlarea-div.bodycopy_content > p:first-child:empty:after{
+    content: 'Click to enter text...';
+    font-style: italic;
+    opacity: 0.5;
+    cursor: text;
+    display: block;
+}
+.bct-wysiwyg-no-padding .htmlarea-div.bodycopy_content{
+    padding: 0!important;
+}
+
+
+
+@media only screen and (max-width: 1550px){
+    .bct-metadata-open #ees_screenContentWrapper,
+    .bct-metadata-open #ees_screenMenuList{
+        left: -200px;
+    }
+    .bct-metadata{
+        max-width: 340px;
+        width: 340px;
+    }
+    .bct-metadata #ees_editMetadata{
+        width: 340px !important;
+    }
+    .bct-metadata .editSection .row{
+        display: block;
+    }
+    .bct-metadata .editSection .cellName{
+        width: 100%;
+        display: block;
+        padding-bottom: 0 !important;
+    }
+    .bct-metadata .editSection .cellData{
+        width: 100%;
+        padding-left: 10px !important;
+        left: 10px;
+    }
+    .bct-metadata .sq-metadata-settings-wrapper{
+        position: relative;
+        display: block;
+        float: none; 
+        width: 100%;
+        height: 20px;
+        top: -4px;;
+        left: 0;
+    }
+}
+@media only screen and (max-width: 1350px){
+    .bct-metadata-open #ees_screenContentWrapper,
+    .bct-metadata-open #ees_screenMenuList{
+        left: -100px;
+    }
+}
+
+
+/* Admin styles */
+/* Content template metadata sidepanel */
+body.sq .bct-metadata{
+    height: 85vh;
+    top: 100px;
+    z-index: 1999;
+}
+body.sq .bct-metadata .metadata_value_table{
+    height: 100%;
+    overflow: hidden;
+    display: block;
+    border-radius: 5px;
+    position: relative;
+    overflow: scroll;
+}
+body.sq .bct-metadata.open{
+    right: 10px;
+}
+body.sq .sq-bodycopy-edit-wrapper{
+    position: relative;
+    transition: left 0.3s;
+    left: 0;
+}
+body.bct-metadata-open .sq-insert-content-container-button-wrapper,
+body.bct-metadata-open .sq-edit-bodycopy-section-wrapper{
+    margin-left: 0;
+}
+body.bct-metadata-open .ViperTP-bar{
+    text-align: left;
+    padding-left: 50px;
+}
+
+
+/* Icon picker */
+body.plus .iconpicker a {
+    color: #333;
+    text-align: center;
+    width: 38px;
+    height: 38px;
+    font-size: 23px;
+    padding: 8px 0 0;
+}
