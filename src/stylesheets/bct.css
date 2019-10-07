@@ -1,23 +1,20 @@
-/* Metadata tabs */
-.bct-tabs .nav-tabs{
-    background-color: #f2f7fd;
-    color: #30425b;
-    font-weight: bold;
-}
-.bct-tab-pane{
-    display: none;
-}
-.bct-tab-pane.active{
-    display: block;
-}
+/* CORE STYLES
+================================== */
 
-/* Matrix Admin & Edit+ overwrites */
+/* Admin & Edit+ overwrites */
 .plus .content_type_wysiwyg .mbs p,
-.plus .content_type_wysiwyg .mbs a, 
+.plus .content_type_wysiwyg .mbs a,
 .plus .content_type_wysiwyg .mbs a:visited{
     color: inherit;
 }
-
+.plus .content_type_wysiwyg .mbs img,
+.bct-metadata .htmlarea-div img{
+    max-width: 100%;
+    height: auto;
+}
+.bct-metadata input[type="text"]{
+    box-shadow: none !important;
+}
 
 /* Edit content screen */
 #ees_screenContentWrapper,
@@ -31,12 +28,33 @@
     left: -300px;
 }
 
-/* Content template wrapper */
+/* Bootstrap content template wrapper */
 .bct-wrapper{
     position: relative;
 }
 
-/* Content template metadata sidepanel */
+/* Wysiwyg areas */
+.bct-wysiwyg:hover{
+    outline: 1px dashed #ccc;
+    outline-offset: -2px;
+}
+.bct-wysiwyg .htmlarea-div:empty:after,
+.bct-wysiwyg .htmlarea-div > p:first-child:empty:after{
+    content: 'Click to enter text...';
+    font-style: italic;
+    opacity: 0.5;
+    cursor: text;
+    display: block;
+}
+.bct-wysiwyg-no-padding .htmlarea-div{
+    padding: 0!important;
+}
+
+
+/* METADATA PANEL
+================================== */
+
+/* Sidepanel wrapper */
 .bct-metadata{
     opacity: 1;
     background-color: #fff;
@@ -61,18 +79,42 @@
     right: 10px;
 }
 
+/* Metadata tabs */
+.bct-tabs .nav-tabs{
+    background-color: #f2f7fd;
+    color: #30425b;
+    font-weight: bold;
+}
+.bct-tab-pane{
+    display: none;
+}
+.bct-tab-pane.active{
+    display: block;
+}
+
 /* Metadata sidepanel inner */
 .bct-metadata #ees_editMetadata{
     width: 600px !important;
     overflow: auto;
     position: relative;
     height: 100%;
-    min-height: calc(90vh - 30px);
 }
-
+.bct-metadata .bct-tab-pane{
+    height: calc(90vh - 45px);
+    overflow: auto;
+}
+.bct-metadata .bct-tab-pane #ees_editMetadata{
+    height: auto;
+    overflow: visible;
+}
 .bct-metadata .cellData{
     width: 75% !important;
     padding-left: 112px !important;
+}
+.bct-metadata #ees_editMetadata .rowWithWYSIWYG .cellData {
+    padding-left: 0 !important;
+    width: 90% !important;
+    margin-top: -10px;
 }
 
 /* Metadata sidepanel sections */
@@ -89,15 +131,9 @@
     padding: 15px 0;
     border-bottom: 1px solid #e0e0e0;
 }
-/*
-.bct-metadata .metadata > h4:hover{
-    background: #f2f2f2;
+.bct-metadata .bct-tab-pane .editSection{
+    border-bottom: none;
 }
-.bct-metadata .editSection.open{
-    height: auto;
-    overflow: visible;
-}
-*/
 .bct-metadata .editSection .row{
     border-bottom: none;
     overflow: visible;
@@ -156,72 +192,10 @@
   background: #585f6a;
 }
 
-/* Wysiwyg areas */
-.bct-wysiwyg{
-    border: 1px solid transparent;
-}
-.bct-wysiwyg:hover,
-.bct-wysiwyg:focus{
-    border: 1px dashed #ccc;
-}
-.bct-wysiwyg .htmlarea-div.bodycopy_content:empty:after,
-.bct-wysiwyg .htmlarea-div.bodycopy_content > p:first-child:empty:after{
-    content: 'Click to enter text...';
-    font-style: italic;
-    opacity: 0.5;
-    cursor: text;
-    display: block;
-}
-.bct-wysiwyg-no-padding .htmlarea-div.bodycopy_content{
-    padding: 0!important;
-}
 
+/* ADMIN STYLES
+============================= */
 
-
-@media only screen and (max-width: 1550px){
-    .bct-metadata-open #ees_screenContentWrapper,
-    .bct-metadata-open #ees_screenMenuList{
-        left: -200px;
-    }
-    .bct-metadata{
-        max-width: 340px;
-        width: 340px;
-    }
-    .bct-metadata #ees_editMetadata{
-        width: 340px !important;
-    }
-    .bct-metadata .editSection .row{
-        display: block;
-    }
-    .bct-metadata .editSection .cellName{
-        width: 100%;
-        display: block;
-        padding-bottom: 0 !important;
-    }
-    .bct-metadata .editSection .cellData{
-        width: 100%;
-        padding-left: 10px !important;
-        left: 10px;
-    }
-    .bct-metadata .sq-metadata-settings-wrapper{
-        position: relative;
-        display: block;
-        float: none; 
-        width: 100%;
-        height: 20px;
-        top: -4px;;
-        left: 0;
-    }
-}
-@media only screen and (max-width: 1350px){
-    .bct-metadata-open #ees_screenContentWrapper,
-    .bct-metadata-open #ees_screenMenuList{
-        left: -100px;
-    }
-}
-
-
-/* Admin styles */
 /* Content template metadata sidepanel */
 body.sq .bct-metadata{
     height: 85vh;
@@ -253,8 +227,79 @@ body.bct-metadata-open .ViperTP-bar{
     padding-left: 50px;
 }
 
+/* Admin metadata panel styles */
+.bct-metadata .sq-backend-section-table{
+    overflow-x: hidden;
+    display: block;
+    min-height: 100%;
+}
+.bct-metadata .sq-backend-section-table > tbody{
+    display: table;
+}
+.bct-metadata .sq-backend-section-heading{
+    padding-left: 20px;
+    background: #fff;
+    display: block;
+    position: relative;
+}
+.bct-metadata .sq-backend-section-inner-table-wrapper{
+    padding: 0 20px;
+}
+.bct-metadata .sq-asset-finder-wrapper{
+    max-width: 310px;
+}
 
-/* Icon picker */
+
+/* RESPONSIVE STYLES
+============================= */
+@media only screen and (max-width: 1550px){
+    .bct-metadata-open #ees_screenContentWrapper,
+    .bct-metadata-open #ees_screenMenuList{
+        left: -200px;
+    }
+    .bct-metadata{
+        max-width: 340px;
+        width: 340px;
+    }
+    .bct-metadata #ees_editMetadata{
+        width: 340px !important;
+    }
+    .bct-metadata .editSection .row{
+        display: block;
+    }
+    .bct-metadata .editSection .cellName{
+        width: 100%;
+        display: block;
+        padding-bottom: 0 !important;
+    }
+    .bct-metadata .editSection .cellData{
+        width: 100%;
+        padding-left: 10px !important;
+        left: 10px;
+    }
+    .bct-metadata .sq-metadata-settings-wrapper{
+        position: relative;
+        display: block;
+        float: none;
+        width: 100%;
+        height: 20px;
+        top: -4px;;
+        left: 0;
+    }
+    .bct-metadata .sq-backend-section-table{
+        overflow-x: auto;
+    }
+}
+@media only screen and (max-width: 1350px){
+    .bct-metadata-open #ees_screenContentWrapper,
+    .bct-metadata-open #ees_screenMenuList{
+        left: -100px;
+    }
+}
+
+
+/* ICON PICKER
+============================= */
 body.plus .iconpicker a {
     color: #333;
     text-align: center;
@@ -262,4 +307,11 @@ body.plus .iconpicker a {
     height: 38px;
     font-size: 23px;
     padding: 8px 0 0;
+}
+
+
+/* UTILITIES
+============================= */
+.cursor-poiner{
+    cursor: pointer;
 }
