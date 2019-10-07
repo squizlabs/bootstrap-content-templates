@@ -1,18 +1,18 @@
 //function for initialising a content template instance
-function iniBct(theWrapper){
+function bctInit(theWrapper){
   var $bctWrapper = $(theWrapper);
   var assetId = $bctWrapper.data('asset-id');
   var $bctMetadata = $($bctWrapper.find('.bct-metadata'));
   $bctMetadata.show();
 
   //add metadata toggle button
-  $bctMetadata.before('<span class="bct-metadata-toggle" id="metadata-toggle-'+assetId+'" onclick="sqToggleMetadataPanel('+assetId+')" title="Edit component"></span>');
+  $bctMetadata.before('<span class="bct-metadata-toggle" id="metadata-toggle-'+assetId+'" onclick="bctToggleMetadataPanel('+assetId+')" title="Edit component"></span>');
   //add metadata close button
-  $bctMetadata.prepend('<span class="bct-metadata-close" onclick="sqCloseMetadataPanel('+assetId+')">X</span>');
+  $bctMetadata.prepend('<span class="bct-metadata-close" onclick="bctCloseMetadataPanel('+assetId+')">X</span>');
 
   //add on change events to metadata fields to update component previews
   $bctMetadata.find('.sq-form-field').on('change keyup', function(e){
-      sqUpdateComponent(this);
+      bctUpdateComponent(this);
   });
 
   //add on change events using mutation observer to related asset metadata fields in Edit+
@@ -25,7 +25,7 @@ function iniBct(theWrapper){
           for(let mutation of mutationsList) {
               var relatedFieldWrapper = $(mutation.target).closest('.typeRelatedAsset');
           }
-          sqUpdateComponentRelatedAsset(relatedFieldWrapper);
+          bctUpdateComponentRelatedAsset(relatedFieldWrapper);
       };
       // Create an observer instance linked to the callback function
       var observer = new MutationObserver(callback);
@@ -44,7 +44,7 @@ function iniBct(theWrapper){
                   '<div class="popover-title"></div><div class="popover-content"></div></div></div>',
           }
       }).on('iconpickerSelected', function(event){
-          sqUpdateComponent(this);
+          bctUpdateComponent(this);
       });
   });
 
@@ -53,16 +53,16 @@ function iniBct(theWrapper){
       var $wysiwyg = $(this);
       $wysiwyg.on('keydown change blur focus', function() {
           console.log($wysiwyg.attr('id'));
-          sqUpdateComponent(this);
+          bctUpdateComponent(this);
       });
   });
 
   //ini bct tabs
-  iniBctTabs(theWrapper);
+  bctIniTabs(theWrapper);
 
   //open panels that are supposed to be open on screen load
   if($('body').hasClass('bct-metadata-open')){
-      sqOpenMetadataPanel($('body').attr('data-open-metadata'));
+      bctOpenMetadataPanel($('body').attr('data-open-metadata'));
       //open any metadata tabs that are supposed to be open
       if($('body').data('open-metadata-tab')){
           $('#'+$('body').data('open-metadata-tab')).tab('show');
@@ -75,7 +75,7 @@ function iniBct(theWrapper){
 
 
 //function for initialising metadata tabs if there are any
-function iniBctTabs(theWrapper){
+function bctIniTabs(theWrapper){
   var $bctWrapper = $(theWrapper);
   var assetId = $bctWrapper.data('asset-id');
   var $tabs = $bctWrapper.find('.bct-tabs');
@@ -103,38 +103,38 @@ function iniBctTabs(theWrapper){
       //add additional events when tab is activated
       $nav.find('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
           //set current active tab as data attribute on body tag
-          setActiveMetadataTab(e.target.id)
+          bctActiveMetadataTab(e.target.id)
       });
   }
 }
 
 //function for setting the active metadata tab state in the body tag
-function setActiveMetadataTab(tabId){
+function bctActiveMetadataTab(tabId){
   var tabId = tabId;
   $('body').attr('data-open-metadata-tab', tabId);
 }
 
 //function for toggling the metadata panel open and close
-function sqToggleMetadataPanel(assetId){
+function bctToggleMetadataPanel(assetId){
   //if there is already one open, either close the current one or open a new one
   if($('body').hasClass('bct-metadata-open')){
       //this means there's already one open
       if($('body').attr('data-open-metadata') == assetId){
           //if the clicked asset ID is open, just close it
-          sqCloseMetadataPanel(assetId);
+          bctCloseMetadataPanel(assetId);
       }else{
           //else, close any opened ones and open a new one
-          sqCloseMetadataPanel($('body').attr('data-open-metadata'));
-          sqOpenMetadataPanel(assetId);
+          bctCloseMetadataPanel($('body').attr('data-open-metadata'));
+          bctOpenMetadataPanel(assetId);
       }
   }else{
       //else just open a new one
-      sqOpenMetadataPanel(assetId);
+      bctOpenMetadataPanel(assetId);
   }
 }
 
 //function for opening the metadata sidepanel
-function sqOpenMetadataPanel(assetId){
+function bctOpenMetadataPanel(assetId){
   //remove open class from any other metadata panels
   $('.bct-wrapper').not('#bct-wrapper-'+assetId).find('.bct-metadata').removeClass('open');
   //add the open class to the clicked metadata panel (this opens it)
@@ -146,7 +146,7 @@ function sqOpenMetadataPanel(assetId){
 }
 
 //function for closing the metadata sidepanel
-function sqCloseMetadataPanel(assetId){
+function bctCloseMetadataPanel(assetId){
   //remove open class from all metadata panels
   $('.bct-metadata').removeClass('open');
   $('#metadata-toggle-'+assetId).removeClass('active');
@@ -156,7 +156,7 @@ function sqCloseMetadataPanel(assetId){
 }
 
 //function for updating the component preview content when metadata is changed
-function sqUpdateComponent(input){
+function bctUpdateComponent(input){
   var $theInput = $(input);
   var $metadataInputWrapper = $theInput.closest('.sq-metadata-wrapper');
   if($theInput.attr('id') != undefined){
@@ -199,7 +199,7 @@ function sqUpdateComponent(input){
 }
 
 //function for updating the component preview when related asset metadata is changed
-function sqUpdateComponentRelatedAsset(wrapperDiv){
+function bctUpdateComponentRelatedAsset(wrapperDiv){
   var $relatedFieldWrapper = $(wrapperDiv);
   var value = $relatedFieldWrapper.find("input[id*='value[0][assetid]']").val();
   var ids = $relatedFieldWrapper.attr('id').replace(/\D+/g,',').split(',');

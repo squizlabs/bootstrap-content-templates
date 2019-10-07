@@ -235,6 +235,7 @@ body.bct-metadata-open .ViperTP-bar{
 }
 .bct-metadata .sq-backend-section-table > tbody{
     display: table;
+    width: 100%;
 }
 .bct-metadata .sq-backend-section-heading{
     padding-left: 20px;
