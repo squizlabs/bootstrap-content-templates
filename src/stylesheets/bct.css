@@ -46,8 +46,20 @@
     cursor: text;
     display: block;
 }
-.bct-wysiwyg-no-padding .htmlarea-div{
+.bct-wysiwyg-no-padding .htmlarea-div,
+.bct-wysiwyg-no-padding .with-viper{
     padding: 0!important;
+}
+.bct-wysiwyg .sq-metadata-wysiwyg-edit-wrapper{
+    margin: 0;
+}
+.bct-wysiwyg .sq-grey-header-wrapper{
+    display: none;
+    border: none !important;
+}
+.bct-wysiwyg .sq-wysiwyg-standalone-body{
+    border: none !important;
+    margin: 0;
 }
 
 
@@ -74,6 +86,7 @@
     border-radius: 5px;
     border: 1px solid #ccc;
     transition: right 0.3s;
+    overflow-x: hidden;
 }
 .bct-metadata.open{
     right: 10px;
@@ -99,6 +112,12 @@
     position: relative;
     height: 100%;
 }
+.bct-metadata-sections{
+    overflow-y: auto;
+}
+.bct-metadata-sections #ees_editMetadata{
+    height: auto;
+}
 .bct-metadata .bct-tab-pane{
     height: calc(90vh - 45px);
     overflow: auto;
@@ -119,15 +138,12 @@
 
 /* Metadata sidepanel sections */
 .bct-metadata .metadata > h4{
-    /*cursor: pointer;*/
     margin: 0;
     padding-top: 8px !important;
     padding-bottom: 8px !important;
     background: #fafafa;
 }
 .bct-metadata .editSection{
-    /*height: 0;
-    overflow: hidden;*/
     padding: 15px 0;
     border-bottom: 1px solid #e0e0e0;
 }
@@ -229,9 +245,7 @@ body.bct-metadata-open .ViperTP-bar{
 
 /* Admin metadata panel styles */
 .bct-metadata .sq-backend-section-table{
-    overflow-x: hidden;
     display: block;
-    min-height: 100%;
 }
 .bct-metadata .sq-backend-section-table > tbody{
     display: table;
@@ -246,10 +260,20 @@ body.bct-metadata-open .ViperTP-bar{
 .bct-metadata .sq-backend-section-inner-table-wrapper{
     padding: 0 20px;
 }
+body.sq .bct-metadata .bct-tab-pane{
+    height: calc(90vh - 105px);
+}
+.bct-metadata #ees_editMetadata > h3{
+    background-color: #f2f7fd;
+    padding: 11px 15px 11px 15px;
+    font-size: 14px;
+    color: #31435a;
+    margin: 0;
+}
+
 .bct-metadata .sq-asset-finder-wrapper{
     max-width: 310px;
 }
-
 
 /* RESPONSIVE STYLES
 ============================= */
@@ -315,4 +339,20 @@ body.plus .iconpicker a {
 ============================= */
 .cursor-poiner{
     cursor: pointer;
+}
+
+/* Show / hide toggles */
+[data-show-gt]{
+    display: none !important;
+}
+.bct-show-2 [data-show-gt~="1"],
+.bct-show-3 [data-show-gt~="2"],
+.bct-show-4 [data-show-gt~="3"],
+.bct-show-5 [data-show-gt~="4"],
+.bct-show-6 [data-show-gt~="5"],
+.bct-show-7 [data-show-gt~="6"],
+.bct-show-8 [data-show-gt~="7"],
+.bct-show-9 [data-show-gt~="8"],
+.bct-show-10 [data-show-gt~="9"]{
+    display: block !important;
 }

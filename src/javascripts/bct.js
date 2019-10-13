@@ -195,6 +195,13 @@ function bctUpdateComponent(input){
           //normal input value
           $element.text(value);
       }
+
+      // Broadcast update event for any event listeners
+      $(window).trigger('bctUpdate', {
+         "containerId": containerId,
+         "inputId": inputId,
+         "value": value
+      });
   }
 }
 

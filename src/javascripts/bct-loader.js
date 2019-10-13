@@ -1,11 +1,11 @@
 //bct plugin vars
-var bctCssBootstrap =               'https://matrix.squiz.net/__data/assets/css_file/0022/25285/matrix-bootstrap.min.css';
+var bctCssBootstrap =               'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/stylesheets/matrix-bootstrap.min.css';
 var bctCssFontawesome =             'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
-var bctCssFontawesomeIconPicker =   'https://matrix.squiz.net/__data/assets/css_file/0019/26065/fontawesome-iconpicker.css';
-var bctCssMain =                    'https://matrix.squiz.net/__data/assets/css_file/0015/25341/bct.css';
-var bctJsBootstrap =                'https://matrix.squiz.net/__data/assets/js_file/0016/25315/matrix-bootstrap.min.js';
-var bctJsFontawesomeIconPicker =    'https://matrix.squiz.net/__data/assets/js_file/0020/26066/fontawesome-iconpicker.js';
-var bctJsMain =                     'https://matrix.squiz.net/__data/assets/js_file/0016/25360/bct.js';
+var bctCssFontawesomeIconPicker =   'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/stylesheets/fontawesome-iconpicker.css';
+var bctCssMain =                    'https://matrix.squiz.net/__data/assets/css_file/0015/25341/bct.css?v='+Math.random();
+var bctJsBootstrap =                'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/javascripts/matrix-bootstrap.min.js';
+var bctJsFontawesomeIconPicker =    'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/javascripts/fontawesome-iconpicker.js';
+var bctJsMain =                     'https://matrix.squiz.net/__data/assets/js_file/0016/25360/bct.js?v='+Math.random();
 
 //function for initialising the bct plugin
 function iniBctWrappers(){
@@ -18,29 +18,32 @@ function iniBctWrappers(){
 }
 
 //load the required CSS and JS into the head if we haven't done it yet
-if(!$('body').hasClass('bct-js-loaded')){
+if(!$('body').hasClass('bct-files-loaded')){
 
     //load the CSS files
     document.head.insertAdjacentHTML('beforeend', '\
         <link rel="stylesheet" href="'+ bctCssBootstrap +'">\
         <link rel="stylesheet" href="'+ bctCssFontawesome +'" id="fa_stylesheet">\
         <link rel="stylesheet" href="'+ bctCssFontawesomeIconPicker +'">\
-        <link rel="stylesheet" href="'+ bctCssMain +'?v='+Math.random()+'+">\
+        <link rel="stylesheet" href="'+ bctCssMain +'">\
     ');
 
     //load the JS files
     $.getScript(bctJsBootstrap);
     $.getScript(bctJsFontawesomeIconPicker);
-    $.getScript(bctJsMain +'?v='+Math.random())
+    $.getScript(bctJsMain)
         .done(function() {
-            $('body').addClass('bct-js-loaded');
             setTimeout(function(){
                 iniBctWrappers();
             }, 100);
         }
     );
 
+    //add class to body to indicate that we've loaded all the files
+    $('body').addClass('bct-files-loaded');
+
 }else{
+    //we've already loaded the files, so we just need to initialise the plugin
 
     if(window.location.href.indexOf('_admin') > -1) {
         //if we are in admin mode, we need to reload some of the scripts
