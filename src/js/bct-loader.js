@@ -1,11 +1,11 @@
 //bct plugin vars
-var bctCssBootstrap =               'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/stylesheets/matrix-bootstrap.min.css';
+var bctCssBootstrap =               'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/css/matrix-bootstrap.min.css';
 var bctCssFontawesome =             'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
-var bctCssFontawesomeIconPicker =   'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/stylesheets/fontawesome-iconpicker.css';
+var bctCssFontawesomeIconPicker =   'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/css/fontawesome-iconpicker.css';
 var bctCssMain =                    'https://matrix.squiz.net/__data/assets/css_file/0015/25341/bct.css?v='+Math.random();
-var bctJsBootstrap =                'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/javascripts/matrix-bootstrap.min.js';
-var bctJsFontawesomeIconPicker =    'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/javascripts/fontawesome-iconpicker.js';
-var bctJsMain =                     'https://matrix.squiz.net/__data/assets/js_file/0016/25360/bct.js?v='+Math.random();
+var bctJsBootstrap =                'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/js/matrix-bootstrap.min.js';
+var bctJsFontawesomeIconPicker =    'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/js/fontawesome-iconpicker.js';
+var bctJsMain =                     'https://matrix.asquiz.net/__data/assets/js_file/0016/25360/bct.js?v='+Math.random();
 
 //function for initialising the bct plugin
 function iniBctWrappers(){

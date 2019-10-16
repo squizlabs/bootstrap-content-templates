@@ -81,23 +81,23 @@ function bctIniTabs(theWrapper){
   var $tabs = $bctWrapper.find('.bct-tabs');
   if($tabs){
       //add the markup for the nav
-      $tabs.prepend(`
-          <div class="mbs">
-              <ul class="nav nav-tabs m-0 p-2 pb-0 border-0">
-              </ul>
-          </div>
-      `);
+      $tabs.prepend('\
+          <div class="mbs">\
+              <ul class="nav nav-tabs m-0 p-2 pb-0 border-0">\
+              </ul>\
+          </div>\
+      ');
       //assign the newly created nav to a variable
       var $nav = $tabs.find('.nav-tabs');
       //for each tab pane, add a nav item
       $tabs.find('.bct-tab-pane').each(function(i){
           var name = $(this).data('name');
-          $nav.append(`
-              <li class="nav-item">
-                  <a class="nav-link ${($(this).hasClass('active') ? 'active' : '')}" data-toggle="tab" id="tab${i}-${assetId}" href="#pane${i}-${assetId}">${name}</a>
-               </li>
-          `);
-          $(this).attr('id',`pane${i}-${assetId}`);
+          $nav.append('\
+              <li class="nav-item">\
+                  <a class="nav-link '+ ($(this).hasClass('active') ? 'active' : '') +'" data-toggle="tab" id="tab'+ i + '-' + assetId + '" href="#panel'+ i +'-'+ assetId +'">'+ name +'</a>\
+               </li>\
+          ');
+          $(this).attr('id','panel'+ i +'-'+ assetId);
       });
 
       //add additional events when tab is activated
@@ -160,25 +160,47 @@ function bctUpdateComponent(input){
   var $theInput = $(input);
   var $metadataInputWrapper = $theInput.closest('.sq-metadata-wrapper');
   if($theInput.attr('id') != undefined){
+      var type = input.type;
       var ids = $theInput.attr('id').replace(/\D+/g,',').split(',');
       var containerId = ids[1];
       var inputId = ids[2];
       var $container = $('#bct-wrapper-'+ containerId);
-      var $element = $container.find('[data-mid="'+ inputId +'"]');
+      var isDefaultCheckbox = $theInput.hasClass('defaultCheckbox');
+
       //get the value
-      var value = $theInput.val();
-      if($theInput.hasClass('defaultCheckbox')){
+      var value = '';
+      if(isDefaultCheckbox){
           //if it's the default checkbox that was changed, we need to get the value differently
           value = $metadataInputWrapper.find('.sq-metadata-contents-wrapper > .sq-form-field').val();
       }else if($theInput.hasClass('htmlarea-div')){
           //the input is a wysiwyg
           value = $theInput.html();
+      }else if(type == 'checkbox'){
+          //input is a checkbox field
+          if(input.checked){
+              value = $theInput.val();
+          }
+      }else{
+          //standard text or select field input
+          value = $theInput.val();
       }
-      var prependVal = '';
+
+      //handle checkbox inputs
+      if(type == 'checkbox'){
+          //if the input is a checkbox, then the target ID needs the value as well
+          inputId += '_' + $theInput.val();
+      }
+
+      //get the element we're going to update
+      var $element = $container.find('[data-mid="'+ inputId +'"]');
+
       //add prepend value if it's available
+      var prependVal = '';
       if($element.data('prepend')){
           prependVal = $element.data('prepend');
       }
+
+      //update the component with the value
       if($element.data('type') == 'icon'){
           //fontawesome icon
           $element.attr('class', value);
@@ -197,10 +219,11 @@ function bctUpdateComponent(input){
       }
 
       // Broadcast update event for any event listeners
-      $(window).trigger('bctUpdate', {
-         "containerId": containerId,
-         "inputId": inputId,
-         "value": value
+      $container.trigger('bctUpdate', {
+          'input': input,
+          'containerId': containerId,
+          'inputId': inputId,
+          'value': value
       });
   }
 }
@@ -214,11 +237,14 @@ function bctUpdateComponentRelatedAsset(wrapperDiv){
   var inputId = ids[2];
   var $container = $('#bct-wrapper-'+ containerId);
   var $element = $container.find('[data-mid="'+ inputId +'"]');
+  var isDefaultCheckbox = $theInput.hasClass('defaultCheckbox');
+
   var prependVal = '';
   //add prepend value if it's available
   if($element.data('prepend')){
       prependVal = $element.data('prepend');
   }
+
   if($element.is('img')){
       //image tag
       if(value > 0){
@@ -233,5 +259,6 @@ function bctUpdateComponentRelatedAsset(wrapperDiv){
       //normal input value
       $element.text(value);
   }
+
 }
 
