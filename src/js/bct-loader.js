@@ -1,3 +1,5 @@
+/* global bctInit */
+
 //bct plugin vars
 var bctCssBootstrap =               'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/css/matrix-bootstrap.min.css';
 var bctCssFontawesome =             'https://use.fontawesome.com/releases/v5.5.0/css/all.css';

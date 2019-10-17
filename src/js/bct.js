@@ -1,5 +1,5 @@
 //function for initialising a content template instance
-function bctInit(theWrapper){
+function bctInit(theWrapper) { // eslint-disable-line no-unused-vars
   var $bctWrapper = $(theWrapper);
   var assetId = $bctWrapper.data('asset-id');
   var $bctMetadata = $($bctWrapper.find('.bct-metadata'));
@@ -11,7 +11,7 @@ function bctInit(theWrapper){
   $bctMetadata.prepend('<span class="bct-metadata-close" onclick="bctCloseMetadataPanel('+assetId+')">X</span>');
 
   //add on change events to metadata fields to update component previews
-  $bctMetadata.find('.sq-form-field').on('change keyup', function(e){
+  $bctMetadata.find('.sq-form-field').on('change keyup', function(){
       bctUpdateComponent(this);
   });
 
@@ -21,7 +21,7 @@ function bctInit(theWrapper){
       // Options for the observer (which mutations to observe)
       var config = { attributes: true, childList: true, subtree: true };
       // Callback function to execute when mutations are observed
-      var callback = function(mutationsList, observer) {
+      var callback = function(mutationsList) {
           for(let mutation of mutationsList) {
               var relatedFieldWrapper = $(mutation.target).closest('.typeRelatedAsset');
           }
@@ -43,7 +43,7 @@ function bctInit(theWrapper){
               popover: '<div class="mbs" style="display: none;"><div class="iconpicker-popover popover shadow" x-placement="bottom bs-popover-bottom"><div class="arrow"></div>' +
                   '<div class="popover-title"></div><div class="popover-content"></div></div></div>',
           }
-      }).on('iconpickerSelected', function(event){
+      }).on('iconpickerSelected', function(){
           bctUpdateComponent(this);
       });
   });
@@ -110,12 +110,12 @@ function bctIniTabs(theWrapper){
 
 //function for setting the active metadata tab state in the body tag
 function bctActiveMetadataTab(tabId){
-  var tabId = tabId;
+  // var tabId = tabId;
   $('body').attr('data-open-metadata-tab', tabId);
 }
 
 //function for toggling the metadata panel open and close
-function bctToggleMetadataPanel(assetId){
+function bctToggleMetadataPanel(assetId) { // eslint-disable-line no-unused-vars
   //if there is already one open, either close the current one or open a new one
   if($('body').hasClass('bct-metadata-open')){
       //this means there's already one open
@@ -237,7 +237,7 @@ function bctUpdateComponentRelatedAsset(wrapperDiv){
   var inputId = ids[2];
   var $container = $('#bct-wrapper-'+ containerId);
   var $element = $container.find('[data-mid="'+ inputId +'"]');
-  var isDefaultCheckbox = $theInput.hasClass('defaultCheckbox');
+  //var isDefaultCheckbox = $theInput.hasClass('defaultCheckbox');
 
   var prependVal = '';
   //add prepend value if it's available

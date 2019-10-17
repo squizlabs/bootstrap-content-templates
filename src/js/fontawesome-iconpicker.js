@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*!
  * Font Awesome Icon Picker
  * https://farbelous.github.io/fontawesome-iconpicker/
