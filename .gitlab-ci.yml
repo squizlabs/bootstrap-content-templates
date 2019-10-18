@@ -6,6 +6,9 @@ test:
   stage: test
   tags:
     - docker
+  only:
+  - master
+  - merge_requests
   script:
     - npm install
     - npm run lint:js
