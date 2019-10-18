@@ -1,6 +1,5 @@
 //function for initialising a content template instance
 function bctInit(theWrapper) { // eslint-disable-line no-unused-vars
-  var a = 10;
   var $bctWrapper = $(theWrapper);
   var assetId = $bctWrapper.data('asset-id');
   var $bctMetadata = $($bctWrapper.find('.bct-metadata'));
