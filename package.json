@@ -69,6 +69,7 @@
     "stylelint-webpack-plugin": "^0.10.5",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.6",
+    "webpack-concat-plugin": "^3.0.0",
     "webpack-merge": "^4.2.1",
     "webpackbar": "^4.0.0"
   },
