@@ -1,13 +1,17 @@
 /* global bctInit */
 
 //bct plugin vars
-var bctCssBootstrap =               'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/css/matrix-bootstrap.min.css';
-var bctCssFontawesome =             'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
-var bctCssFontawesomeIconPicker =   'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/css/fontawesome-iconpicker.css';
-var bctCssMain =                    'https://matrix.squiz.net/__data/assets/css_file/0015/25341/bct.css?v='+Math.random();
-var bctJsBootstrap =                'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/js/matrix-bootstrap.min.js';
-var bctJsFontawesomeIconPicker =    'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/js/fontawesome-iconpicker.js';
-var bctJsMain =                     'https://matrix.asquiz.net/__data/assets/js_file/0016/25360/bct.js?v='+Math.random();
+//var bctCssBootstrap =               'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/css/matrix-bootstrap.min.css';
+//var bctCssFontawesome =             'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
+//var bctCssFontawesomeIconPicker =   'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/css/fontawesome-iconpicker.css';
+//var bctCssMain =                    'https://matrix.squiz.net/__data/assets/css_file/0015/25341/bct.css?v='+Math.random();
+//var bctJsBootstrap =                'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/js/matrix-bootstrap.min.js';
+//var bctJsFontawesomeIconPicker =    'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/js/fontawesome-iconpicker.js';
+//var bctJsMain =                     'https://matrix.squiz.net/__data/assets/js_file/0016/25360/bct.js?v='+Math.random();
+
+var bctCssMin =           'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/dist/bct.min.css';
+var bctCssFontawesome =   'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
+var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/dist/bct.min.js';
 
 //function for initialising the bct plugin
 function iniBctWrappers(){
@@ -23,17 +27,22 @@ function iniBctWrappers(){
 if(!$('body').hasClass('bct-files-loaded')){
 
     //load the CSS files
-    document.head.insertAdjacentHTML('beforeend', '\
+    /*document.head.insertAdjacentHTML('beforeend', '\
         <link rel="stylesheet" href="'+ bctCssBootstrap +'">\
         <link rel="stylesheet" href="'+ bctCssFontawesome +'" id="fa_stylesheet">\
         <link rel="stylesheet" href="'+ bctCssFontawesomeIconPicker +'">\
         <link rel="stylesheet" href="'+ bctCssMain +'">\
+    ');*/
+    document.head.insertAdjacentHTML('beforeend', '\
+        <link rel="stylesheet" href="'+ bctCssMin +'">\
+        <link rel="stylesheet" href="'+ bctCssFontawesome +'" id="fa_stylesheet">\
     ');
 
     //load the JS files
-    $.getScript(bctJsBootstrap);
-    $.getScript(bctJsFontawesomeIconPicker);
-    $.getScript(bctJsMain)
+    //$.getScript(bctJsBootstrap);
+    //$.getScript(bctJsFontawesomeIconPicker);
+    //$.getScript(bctJsMain)
+    $.getScript(bctJsMin)
         .done(function() {
             setTimeout(function(){
                 iniBctWrappers();
@@ -51,11 +60,13 @@ if(!$('body').hasClass('bct-files-loaded')){
         //if we are in admin mode, we need to reload some of the scripts
         if(!$('#main_form').hasClass('bct-admin-loaded')){
             //in admin we need to reload this CSS file into the body tag because of a weird bug
-            document.body.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="'+ bctCssMain +'?v='+Math.random()+'+">');
+            //document.body.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="'+ bctCssMain +'?v='+Math.random()+'+">');
+            document.body.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="'+ bctCssMin +'">');
             //reload the JS files using a promise, when all are completed, we can call the bct ini function again
             $.when(
-                $.getScript(bctJsBootstrap),
-                $.getScript(bctJsFontawesomeIconPicker),
+                //$.getScript(bctJsBootstrap),
+                //$.getScript(bctJsFontawesomeIconPicker),
+                $.getScript(bctJsMin),
                 $.Deferred(function( deferred ){
                     $( deferred.resolve );
                 }),

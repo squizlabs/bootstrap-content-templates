@@ -179,7 +179,8 @@
 
 /* Metadata sidepanel toggle button */
 .bct-metadata-toggle {
-  background: url(/__lib/web/images/icons/edit_mode.png) #fafafa no-repeat 50% 50%;
+  background: #fafafa no-repeat 50% 50%;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAoUlEQVQ4jdXRPQrCQBiE4QciEjtv4DG8gNjaWnoMy1zFVHYpLKKkEA9kKTZCbHYxiOTHSj8YWJZ5Z5Zv+ZdJsUMezoOnQB10HBKSIsMK90ZIHg2jDrjADHOssQ/3dTQlHXCKGxaYYosJNni0NZc4B9UNZS0vBmMcAli9wScdy4vNlw/NZRcsmCpcv4EFc4Kl15f1hmNADKmGws2AXgv7nXkCDvUzJif9D2oAAAAASUVORK5CYII=');
   display: block;
   padding: 6px 6px 7px 7px;
   width: 16px;
