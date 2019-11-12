@@ -2,35 +2,81 @@
 
 Bootstrap Content Templates (BCT) is an extension for Squiz Matrix that enables Bootstrap 4 and Fontawesome 5 based Content Template development as well as an enhanced and more intuitive editing experience for content editors.
 
-The extension consists of a simple loader JS file that when included in the Simple Edit Layout of a Content Template, it loads an additional JS and CSS file to enable Bootstrap 4 CSS, JS and Fontawesome 5 icons in both the Admin and Edit+ interface.
+The extension consists of a simple loader JS file that when included in the Simple Edit Layout of a Content Template, it loads an additional JS and CSS file to enable Bootstrap 4 CSS & JS and Font Awesome 5 icons in both the Admin and Edit+ interface.
 
 ## Installation
 
-Installation can be done in multiple ways:
+Installation can be done either by loading the files via a CDN or locally.
 
 ### CDN
 
-### Download Files
+This repo is automatically synced from the Squiz GitLab instance over to GitHub at [https://github.com/squizlabs/bootstrap-content-templates](https://github.com/squizlabs/bootstrap-content-templates). 
+
+This means any files in the repo are accessible via the [jsDelivr CDN](https://www.jsdelivr.com/) using either a branch or a tag for any of the files. 
+
+For example, to load the master branch version of the loader script you can simply use:
+
+[`https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/dist/bct-loader.js`](https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/dist/bct-loader.js)
+
+### Local files
+
+The alternative is to download the CSS and JS files from the `/dist/` repo and upload them to your Squiz Matrix instance and reference them from there. 
 
 ## Usage
 
 In order to use on a Content Template, add the `bct-loader.js` file to the end of your Simple Edit Layout like this:
 
 ```html
-<script src="bct-loader.js"></script>
+<script src="/path/to/bct-loader.js"></script>
 ```
 
 This will automatically load the following libraries into your Admin or Edit+ interface when this Content Template is used:
 
 - Bootstrap 4 
 
-- Fontawesome 5
+- Font Awesome 5
 
-## Browser Support
+#### Using Bootstrap classes
+
+Bootstrap is prefixed with the `.mbs` class, so you just need to wrap any HTML elements that use Boostrap in an element with that class on it. For example:
+
+```html
+<div class="mbs">
+    <div class="row text-center">
+        ...
+    </div>
+</div>
+```
+
+You can use Font Awesome classes and icons as per normal.
+
+### Sidepanel metadata
+
+This is where the extension is most useful, as it can take the default output of the Metadata fields of a CT and put them in a sidepanel of the editing interface where they don't distract or clutter up the main editing content area.
+
+To do this, you just have to write the markup for the SEL in a certain way:
+
+```html
+<div class="bct-wrapper" id="bct-wrapper-%asset_assetid%" data-asset-id="%asset_assetid%">
+    
+    <div class="bct-metadata" style="display:none;">
+        %metadata-F_metadata_values%
+    </div>
+    
+    %__custom-contents%
+    
+</div><!--.bct-wrapper-->
+
+<script src="/path/to/bct-loader.js"></script>
+```
+
+
+
+## Browser support
 
 Same as the official Squiz Matrix browser support list for version 5.5. See [https://matrix.squiz.net/resources/requirements#web-browser-support](https://matrix.squiz.net/resources/requirements#web-browser-support). 
 
-## Support & Contributing
+## Support & contributing
 
 Anyone is welcome to contribute. If you decide to get involved, please take a moment and check out the following:
 
