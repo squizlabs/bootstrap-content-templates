@@ -87,7 +87,7 @@ When clicked, it'll open a sidepanel from the right where everything inside the`
 
 ![](/docs/sidepanel-open.jpg)
 
-### Sidepanel Tabs
+### Sidepanel tabs
 
 You can group content within the sidepanel into tabs to allow for better separation and digestion of metadata fields. This is useful when you want to split Metadata Sections into separate tab panels for easier editing.
 
@@ -109,22 +109,135 @@ This will create tabs like this:
 
 ![](/docs/sidepanel-open-tabs.jpg)
 
-
-### Content preview changes
-
-_TODO_
-
 ### Dynamic content updates
 
-_TODO_
+_This feature requires version 5.5.2.0 of Squiz Matrix as it relies on global keyword support in SEL._
+
+In order to improve the user experience of editing content, you can dynamically update the preview of the content in your SEL as metadata field updates are made.
+
+For example, you might show a preview of the component in your SEL using Bootstrap to help the editor get an idea of what that component will look like on the frontend.
+
+```html
+<div 
+    class="bct-wrapper" 
+    id="bct-wrapper-%asset_assetid%" 
+    data-asset-id="%asset_assetid%">
+
+    <div class="mbs">
+        <div class="card">
+            <div class="card-body">
+                <h3>%asset_metadata_cardTitle%</h3>
+            </div>
+        </div>
+    </div>
+    
+</div>
+```
+
+To make this value update dynamically whenever its metadata field is changed, simply add the `data-mid=""` attribute to the HTML element with the ID of the metadata field.
+
+```html
+<div 
+    class="bct-wrapper" 
+    id="bct-wrapper-%asset_assetid%" 
+    data-asset-id="%asset_assetid%">
+
+    <div class="mbs">
+        <div class="card">
+            <div class="card-body">
+                <h3 data-mid="%globals_asset_assetid:1234%">%asset_metadata_cardTitle%</h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+```
+
+#### Field types
+
+In addition to simple element text values, you can also dynamically update other values. This is controlled via the `data-type` attribute.
+
+The available types include:
+
+* Class: `data-type="class"`
+* Background image: `data-type="bg-image"`
+* Icon: `data-type="icon"`
+    * If the metadata field is a text field, this will add an icon picker to the field.
+
+#### Prepending values
+
+You can use the `data-prepend=""` attribute to always prepend a value to an element when the metadata field is updated.
+
+For example, if you are updating a class on an element, but want other classes to remain, you can use this attribute to always prepend a hardcoded class.
+
+```html
+<span  
+    data-mid="%globals_asset_assetid:1234%" 
+    data-type="class" 
+    data-prepend="btn btn-md " 
+    class="btn btn-md %asset_metadata_btnStyle%">
+```
+
+#### data-show-gt
+
+You can use the `data-show-gt=""` attribute to dynamically show or hide HTML elements if a metadata field value is a certan number value. 
+
+This is useful when you have components with multiple elements on it such as cards, tabs, accordions etc and you want to let editors control how many elements to show on the page (usually done with select field containing number values).
+
+To use, wrap your elements inside a parent element like this:
+
+```html
+<div 
+    data-mid="%globals_asset_assetid:1234%" 
+    data-type="class" 
+    data-prepend="bct-show-" class="bct-show-%asset_metadata_amount%">
+    ...
+</div>
+```
+
+Then for each element you want to show/hide, add the `data-show-gt=""` attribute inluding the minimum number required to show that element:
+
+```html
+<div class="card" data-show-gt="3 4">
+    ...
+</div>
+```
+
+Now when the associated metadata field's value changes, this element will only show if the value is greater than `3` or `4`.
 
 ### Update hooks
 
-_TODO_
+You can write custom JS into the SEL that triggers whenever any of the metadata fields inside the sidepanel change.
 
-## Browser support
+Update events are triggerd under the custom `bctUpdate` jQuery `.trigger()` event and are attached to each `<div class="bct-wrapper" id="bct-wrapper-%asset_assetid%">` element. 
 
-Same as the official Squiz Matrix browser support list for version 5.5. See [https://matrix.squiz.net/resources/requirements#web-browser-support](https://matrix.squiz.net/resources/requirements#web-browser-support). 
+To capture the event and run your own JS, use the jQuery `.on()` event handler like this:
+
+```html
+<script>
+setTimeout(function(){ 
+    $('#bct-wrapper-%asset_assetid%').on('bctUpdate', function(e, params){
+        //your JS code
+    }, 100); 
+</script>
+```
+_Note that we have to wrap this in `setTimeout()` due to the way Matrix loads the DOM of the screen after a save event._
+
+An object containing useful information about the event is passed to the `trigger` event as follows:
+
+```javascript
+$container.trigger('bctUpdate', {
+    'input':        input,          //input field element (object)
+    'containerId':  containerId,    //asset id of the content container (string)
+    'inputId':      inputId,        //id of the metadata input field
+    'value':        value           //the value of the metadata field (string)
+});
+```
+
+## Requirements
+
+* Squiz Matrix version 5.5
+* Any browser that [Squiz Matrix supports](https://matrix.squiz.net/resources/requirements#web-browser-support) 
 
 ## Support & contributing
 
