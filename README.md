@@ -1,8 +1,20 @@
+----
+
+## On this page
+{:.no_toc}
+
+- TOC
+{:toc}
+
+----
+
 # Bootstrap Content Templates for Squiz Matrix
 
 Bootstrap Content Templates (BCT) is an extension for Squiz Matrix that enables Bootstrap 4 and Fontawesome 5 based Content Template (CT) development as well as an enhanced and more intuitive editing experience for content editors.
 
 The extension consists of a simple loader JS file that when included in the Simple Edit Layout (SEL) of a CT loads additional JS and CSS files to enable Bootstrap 4 CSS & JS and Font Awesome 5 icons in both the Admin and Edit+ interface.
+
+
 
 ## Installation
 
