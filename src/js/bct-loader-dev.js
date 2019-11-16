@@ -1,13 +1,14 @@
-/*!
-  * Bootstrap Content Templates v1.0.0-rc1
-  */
-
 /* global bctInit */
 
 //bct plugin vars
-var bctCssMin =           'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/dist/bct.min.css';
-var bctCssFontawesome =   'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
-var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/dist/bct.min.js';
+var bctCssBootstrap =               '/css/matrix-bootstrap.min.css';
+var bctCssFontawesome =             'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
+var bctCssFontawesomeIconPicker =   '/css/fontawesome-iconpicker.css';
+var bctCssMain =                    '/css/bct.css?v='+Math.random();
+var bctJsBootstrap =                '/js/matrix-bootstrap.min.js';
+var bctJsFontawesomeIconPicker =    '/js/fontawesome-iconpicker.js';
+var bctJsMain =                     '/js/bct.js?v='+Math.random();
+
 
 //function for initialising the bct plugin
 function iniBctWrappers(){
@@ -24,12 +25,16 @@ if(!$('body').hasClass('bct-files-loaded')){
 
     //load the CSS files
     document.head.insertAdjacentHTML('beforeend', '\
-        <link rel="stylesheet" href="'+ bctCssMin +'">\
+        <link rel="stylesheet" href="'+ bctCssBootstrap +'">\
         <link rel="stylesheet" href="'+ bctCssFontawesome +'" id="fa_stylesheet">\
+        <link rel="stylesheet" href="'+ bctCssFontawesomeIconPicker +'">\
+        <link rel="stylesheet" href="'+ bctCssMain +'">\
     ');
 
     //load the JS files
-    $.getScript(bctJsMin)
+    $.getScript(bctJsBootstrap);
+    $.getScript(bctJsFontawesomeIconPicker);
+    $.getScript(bctJsMain)
         .done(function() {
             setTimeout(function(){
                 iniBctWrappers();
@@ -51,7 +56,8 @@ if(!$('body').hasClass('bct-files-loaded')){
             document.body.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="'+ bctCssMin +'">');
             //reload the JS files using a promise, when all are completed, we can call the bct ini function again
             $.when(
-                $.getScript(bctJsMin),
+                $.getScript(bctJsBootstrap),
+                $.getScript(bctJsFontawesomeIconPicker),
                 $.Deferred(function( deferred ){
                     $( deferred.resolve );
                 }),

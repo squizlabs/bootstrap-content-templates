@@ -1,5 +1,3 @@
-
-
 # Bootstrap Content Templates for Squiz Matrix
 
 Bootstrap Content Templates (BCT) is an extension for Squiz Matrix that enables Bootstrap 4 and Fontawesome 5 based Content Template (CT) development as well as an enhanced and more intuitive editing experience for content editors.
@@ -33,9 +31,9 @@ This repo is (currently) automatically synced from the Squiz GitLab instance ove
 
 This means any files in the repo are accessible via the [jsDelivr CDN](https://www.jsdelivr.com/) using either a branch or a tag for any of the files. 
 
-For example, to load the master branch version of the loader script you can simply use:
+For example, to load the latest version of the loader script you can use:
 
-[`https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/dist/bct-loader.js`](https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/dist/bct-loader.js)
+https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/dist/bct-loader.js
 
 ### Local files
 
