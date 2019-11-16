@@ -52,8 +52,7 @@ if(!$('body').hasClass('bct-files-loaded')){
         //if we are in admin mode, we need to reload some of the scripts
         if(!$('#main_form').hasClass('bct-admin-loaded')){
             //in admin we need to reload this CSS file into the body tag because of a weird bug
-            //document.body.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="'+ bctCssMain +'?v='+Math.random()+'+">');
-            document.body.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="'+ bctCssMin +'">');
+            document.body.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="'+ bctCssMain +'?v='+Math.random()+'+">');
             //reload the JS files using a promise, when all are completed, we can call the bct ini function again
             $.when(
                 $.getScript(bctJsBootstrap),
