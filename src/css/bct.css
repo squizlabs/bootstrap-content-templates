@@ -31,6 +31,10 @@
   left: -300px;
 }
 
+.bct-metadata-open .ees_assetPicker .assetChangeButton {
+    padding: 0 10px;
+}
+
 /* Bootstrap content template wrapper */
 .bct-wrapper {
   position: relative;
