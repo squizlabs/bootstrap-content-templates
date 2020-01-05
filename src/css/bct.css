@@ -2,11 +2,6 @@
 ================================== */
 
 /* Admin & Edit+ overwrites */
-.plus .content_type_wysiwyg .mbs p,
-.plus .content_type_wysiwyg .mbs a,
-.plus .content_type_wysiwyg .mbs a:visited {
-  color: inherit;
-}
 
 .plus .content_type_wysiwyg .mbs img,
 .bct-metadata .htmlarea-div img {
