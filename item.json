@@ -7,7 +7,7 @@
     "owner":            "@bbanda",
     "product_versions": {
         "matrix":       "5.5.0.0"
-    }
+    },
     "keywords": [
         "matrix",
         "content templates",
