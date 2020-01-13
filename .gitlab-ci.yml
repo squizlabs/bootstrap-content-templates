@@ -2,7 +2,7 @@ image: alpine:latest
 
 stages:
   - test
-  - pages
+  - deploy
 
 test:
   image: node:12-alpine
