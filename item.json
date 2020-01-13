@@ -1,0 +1,26 @@
+{
+    "name":             "Bootstrap Content Templates",
+    "download":         "",
+    "repo":             "https://gitlab.squiz.net/marketplace/internal/bootstrap-content-templates",
+    "description":      "An extension for Squiz Matrix that enables the ability to easily create enhanced and more user intuitive Content Templates using Bootstrap 4 and FontAwesome 5.",
+    "version":          "1.0.1",
+    "owner":            "@bbanda",
+    "product_versions": {
+        "matrix":       "5.5.0.0"
+    },
+    "dependencies": [
+    ],
+    "keywords": [
+        "matrix",
+        "content templates",
+        "edit plus",
+        "extension"
+    ],
+    "demo":             "",
+    "bugs": {
+        "url":          "https://gitlab.squiz.net/marketplace/internal/bootstrap-content-templates/issues",
+        "email":        "bbanda@squiz.net",
+        "slack":        "@bbanda"
+    },
+    "licence":          "MIT"
+}
