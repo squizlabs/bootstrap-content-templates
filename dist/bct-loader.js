@@ -1,13 +1,17 @@
 /*!
+<<<<<<< HEAD
   * Bootstrap Content Templates v1.0.0
+=======
+  * Bootstrap Content Templates v1.0.1
+>>>>>>> 42e925cc547bd636fa49b6516f0224538cf342a9
   */
 
 /* global bctInit */
 
 //bct plugin vars
-var bctCssMin =           'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/dist/bct.min.css';
+var bctCssMin =           'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.1/dist/bct.min.css';
 var bctCssFontawesome =   'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
-var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/dist/bct.min.js';
+var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.1/dist/bct.min.js';
 
 //function for initialising the bct plugin
 function iniBctWrappers(){

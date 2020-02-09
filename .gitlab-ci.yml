@@ -1,5 +1,8 @@
+image: alpine:latest
+
 stages:
   - test
+  - deploy
 
 test:
   image: node:12-alpine
@@ -13,3 +16,16 @@ test:
     - npm install
     - npm run lint:js
     - npm run lint:styles
+
+pages:
+  stage: deploy
+  script:
+  - apk add --no-cache rsync
+  - rsync -a --exclude=public/ ./ ./public/
+  artifacts:
+    paths:
+    - public
+  tags:
+    - docker
+  only:
+    - master
