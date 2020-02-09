@@ -1,3 +1,10 @@
 .mbs {
   @import "~bootstrap/scss/bootstrap";
+
+  // Fix inherit text styles from text-* BS styles in Matrix Admin wysiwygs
+  .bct-wysiwyg-inherit-text-color .text-white * { color: $white !important; }
+
+  @each $color, $value in $theme-colors {
+    @include text-emphasis-variant(".bct-wysiwyg-inherit-text-color .text-#{$color} *", $value, true);
+  }
 }

@@ -69,9 +69,28 @@
   margin: 0;
 }
 
+.plus .content_type_wysiwyg .bct-wysiwyg h1,
+.plus .content_type_wysiwyg .bct-wysiwyg h2,
+.plus .content_type_wysiwyg .bct-wysiwyg h3,
+.plus .content_type_wysiwyg .bct-wysiwyg h4,
+.plus .content_type_wysiwyg .bct-wysiwyg h5,
+.plus .content_type_wysiwyg .bct-wysiwyg h6,
+.plus .content_type_wysiwyg .bct-wysiwyg p {
+  margin-top: 0;
+}
+
 .plus .content_type_wysiwyg .bct-wysiwyg-inherit-text-color p,
 .plus .content_type_wysiwyg .bct-wysiwyg-inherit-text-color a {
   color: inherit;
+}
+
+.bct-wysiwyg .with-viper {
+  min-width: 100px;
+}
+
+.bct-wysiwyg img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* METADATA PANEL
