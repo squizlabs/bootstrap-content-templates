@@ -74,6 +74,11 @@
   margin: 0;
 }
 
+.plus .content_type_wysiwyg .bct-wysiwyg-inherit-text-color p,
+.plus .content_type_wysiwyg .bct-wysiwyg-inherit-text-color a {
+  color: inherit;
+}
+
 /* METADATA PANEL
 ================================== */
 

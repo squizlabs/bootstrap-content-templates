@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap Content Templates v1.0.0-rc1
+  * Bootstrap Content Templates v1.0.0
   */
 
 /* global bctInit */
