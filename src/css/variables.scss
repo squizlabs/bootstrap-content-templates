@@ -1,4 +1,23 @@
 // BCT SASS Variables
 
 // Bootstrap
+
+// Links
 $link-decoration:   underline;
+
+// Typography
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+
+$h1-font-size:                $font-size-base * 2.5 !important;
+$h2-font-size:                $font-size-base * 2 !important;
+$h3-font-size:                $font-size-base * 1.75 !important;
+$h4-font-size:                $font-size-base * 1.5 !important;
+$h5-font-size:                $font-size-base * 1.25 !important;
+$h6-font-size:                $font-size-base !important;
+
+$display1-size:               6rem !important;
+$display2-size:               5.5rem !important;
+$display3-size:               4.5rem !important;
+$display4-size:               3.5rem !important;
+
+$lead-font-size:              $font-size-base * 1.25 !important;

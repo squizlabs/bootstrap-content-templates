@@ -1,3 +1,5 @@
+// Additional Bootstrap styles to make them work better with Matrix Admin and Edit+ WYSIWYGS.
+
 .mbs {
   @import "~bootstrap/scss/bootstrap";
 
@@ -6,5 +8,14 @@
 
   @each $color, $value in $theme-colors {
     @include text-emphasis-variant(".bct-wysiwyg-inherit-text-color .text-#{$color} *", $value, true);
+  }
+
+  .nav {
+    list-style: none !important;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    color: #fff !important;
   }
 }
