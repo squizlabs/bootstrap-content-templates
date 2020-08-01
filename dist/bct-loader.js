@@ -6,9 +6,9 @@
 
 //bct plugin vars
 var matrixVersion = 6;
-var bctCssMin =           'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@matrix6-beta/dist/bct-m6.min.css';
+var bctCssMin =           'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@matrix6-beta/dist/bct.min.css';
 var bctCssFontawesome =   'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
-var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@matrix6-beta/dist/bct-m6.min.js';
+var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@matrix6-beta/dist/bct.min.js';
 
 //matrix 5
 var m5_bctCssMin =       'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.7/dist/bct.min.css';

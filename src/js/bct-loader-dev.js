@@ -30,16 +30,15 @@ if(!$('body').hasClass('bct-files-loaded')){
 
     //check what version of matrix we are in
     if(document.head.querySelector('link[href*="/frontend/dist/css/main.min.css"]')){
-        //matrix 6
-        matrixVersion = 6;
-        $('body').addClass('matrix6');
+      //matrix 6
+      matrixVersion = 6;
     }else{
-        //matrix 5
-        matrixVersion = 5;
-        $('body').addClass('matrix5');
-        bctCssMain = m5_bctCssMain;
-        bctJsMain = m5_bctJsMain;
+      //matrix 5
+      matrixVersion = 5;
+      bctCssMin = m5_bctCssMin;
+      bctJsMin = m5_bctJsMin;
     }
+    $('body').addClass('matrix' + matrixVersion);
 
     //load the CSS files
     document.head.insertAdjacentHTML('beforeend', '\
