@@ -14,6 +14,18 @@ var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-conte
 var m5_bctCssMin =       'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.7/dist/bct.min.css';
 var m5_bctJsMin =        'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.7/dist/bct.min.js';
 
+//check what version of matrix we are in
+if(document.head.querySelector('link[href*="/frontend/dist/css/main.min.css"]')){
+    //matrix 6
+    matrixVersion = 6;
+}else{
+    //matrix 5
+    matrixVersion = 5;
+    bctCssMin = m5_bctCssMin;
+    bctJsMin = m5_bctJsMin;
+}
+$('body').addClass('matrix' + matrixVersion);
+
 //function for initialising the bct plugin
 function iniBctWrappers(){
     //find all bct wrappers on the screen and initialise them with the bct plugin
@@ -26,18 +38,6 @@ function iniBctWrappers(){
 
 //load the required CSS and JS into the head if we haven't done it yet
 if(!$('body').hasClass('bct-files-loaded')){
-
-    //check what version of matrix we are in
-    if(document.head.querySelector('link[href*="/frontend/dist/css/main.min.css"]')){
-        //matrix 6
-        matrixVersion = 6;
-    }else{
-        //matrix 5
-        matrixVersion = 5;
-        bctCssMin = m5_bctCssMin;
-        bctJsMin = m5_bctJsMin;
-    }
-    $('body').addClass('matrix' + matrixVersion);
 
     //load the CSS files
     document.head.insertAdjacentHTML('beforeend', '\
