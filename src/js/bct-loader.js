@@ -1,13 +1,18 @@
 /*!
-  * Bootstrap Content Templates v1.0.7
+  * Bootstrap Content Templates vmatrix6-beta
   */
 
 /* global bctInit */
 
 //bct plugin vars
-var bctCssMin =           'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.7/dist/bct.min.css';
+var matrixVersion = 6;
+var bctCssMin =           'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@matrix6-beta/dist/bct-m6.min.css';
 var bctCssFontawesome =   'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
-var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.7/dist/bct.min.js';
+var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@matrix6-beta/dist/bct-m6.min.js';
+
+//matrix 5
+var m5_bctCssMin =       'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.7/dist/bct.min.css';
+var m5_bctJsMin =        'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.7/dist/bct.min.js';
 
 //function for initialising the bct plugin
 function iniBctWrappers(){
@@ -21,6 +26,18 @@ function iniBctWrappers(){
 
 //load the required CSS and JS into the head if we haven't done it yet
 if(!$('body').hasClass('bct-files-loaded')){
+
+    //check what version of matrix we are in
+    if(document.head.querySelector('link[href*="/frontend/dist/css/main.min.css"]')){
+        //matrix 6
+        matrixVersion = 6;
+    }else{
+        //matrix 5
+        matrixVersion = 5;
+        bctCssMin = m5_bctCssMin;
+        bctJsMin = m5_bctJsMin;
+    }
+    $('body').addClass('matrix' + matrixVersion);
 
     //load the CSS files
     document.head.insertAdjacentHTML('beforeend', '\

@@ -6,31 +6,22 @@ function bctInit(theWrapper) { // eslint-disable-line no-unused-vars
   $bctMetadata.show();
 
   //add metadata toggle button
-  $bctMetadata.before('<span class="bct-metadata-toggle" id="metadata-toggle-'+assetId+'" onclick="bctToggleMetadataPanel('+assetId+')" title="Edit component"></span>');
+  $bctMetadata.before(`
+    <span data-tippy-tooltip="Edit component fields" data-tippy-position="top" class="bct-metadata-toggle btn btn-icon btn-default btn-icon-solo" id="metadata-toggle-${assetId}" onclick="bctToggleMetadataPanel(${assetId})">
+      <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path></svg>
+    </span>
+  `);
+
   //add metadata close button
-  $bctMetadata.prepend('<span class="bct-metadata-close" onclick="bctCloseMetadataPanel('+assetId+')">X</span>');
+  $bctMetadata.prepend(`
+    <button data-tippy-tooltip="Close panel" data-tippy-position="top" class="bct-metadata-close btn btn-icon btn-icon-solo btn-default-transparent" type="button" aria-label="Close panel" onclick="bctCloseMetadataPanel(${assetId})">
+      <svg class="icon " aria-hidden="true" focusable="false" aria-label="icon-close"><use href="/__lib/frontend/dist/images/symbol-defs.svg#icon-close"></use></svg>
+    </button>
+  `);
 
   //add on change events to metadata fields to update component previews
   $bctMetadata.find('.sq-form-field').on('change keyup', function(){
       bctUpdateComponent(this);
-  });
-
-  //add on change events using mutation observer to related asset metadata fields in Edit+
-  $bctMetadata.find('.ees_assetPicker').each(function(){
-      var targetNode = this;
-      // Options for the observer (which mutations to observe)
-      var config = { attributes: true, childList: true, subtree: true };
-      // Callback function to execute when mutations are observed
-      var callback = function(mutationsList) {
-          for(let mutation of mutationsList) {
-              var relatedFieldWrapper = $(mutation.target).closest('.typeRelatedAsset');
-          }
-          bctUpdateComponentRelatedAsset(relatedFieldWrapper);
-      };
-      // Create an observer instance linked to the callback function
-      var observer = new MutationObserver(callback);
-      // Start observing the target node for configured mutations
-      observer.observe(targetNode, config);
   });
 
   //initialise icon pickers on metadata text fields
@@ -261,3 +252,4 @@ function bctUpdateComponentRelatedAsset(wrapperDiv){
   }
 
 }
+

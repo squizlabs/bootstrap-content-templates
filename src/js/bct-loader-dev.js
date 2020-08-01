@@ -1,13 +1,18 @@
 /* global bctInit */
 
 //bct plugin vars
-var bctCssBootstrap =               '/css/matrix-bootstrap.min.css';
+var matrixVersion = 6;
+var bctCssBootstrap =               'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/css/matrix-bootstrap.min.css';
 var bctCssFontawesome =             'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
-var bctCssFontawesomeIconPicker =   '/css/fontawesome-iconpicker.css';
-var bctCssMain =                    '/css/bct.css?v='+Math.random();
-var bctJsBootstrap =                '/js/matrix-bootstrap.min.js';
-var bctJsFontawesomeIconPicker =    '/js/fontawesome-iconpicker.js';
-var bctJsMain =                     '/js/bct.js?v='+Math.random();
+var bctCssFontawesomeIconPicker =   'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/css/fontawesome-iconpicker.css';
+var bctCssMain =                    '/__data/assets/css_file/0026/5858/bct-m6.css?v='+Math.random();
+var bctJsBootstrap =                'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/js/matrix-bootstrap.min.js';
+var bctJsFontawesomeIconPicker =    'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/js/fontawesome-iconpicker.js';
+var bctJsMain =                     '/__data/assets/js_file/0027/5859/bct-m6.js?v='+Math.random();
+
+//matrix 5
+var m5_bctCssMain =                  '/__data/assets/css_file/0026/5858/bct-m6.css?v='+Math.random();
+var m5_bctJsMain =                   '/__data/assets/js_file/0027/5859/bct-m6.js?v='+Math.random();
 
 
 //function for initialising the bct plugin
@@ -22,6 +27,19 @@ function iniBctWrappers(){
 
 //load the required CSS and JS into the head if we haven't done it yet
 if(!$('body').hasClass('bct-files-loaded')){
+
+    //check what version of matrix we are in
+    if(document.head.querySelector('link[href*="/frontend/dist/css/main.min.css"]')){
+        //matrix 6
+        matrixVersion = 6;
+        $('body').addClass('matrix6');
+    }else{
+        //matrix 5
+        matrixVersion = 5;
+        $('body').addClass('matrix5');
+        bctCssMain = m5_bctCssMain;
+        bctJsMain = m5_bctJsMain;
+    }
 
     //load the CSS files
     document.head.insertAdjacentHTML('beforeend', '\
