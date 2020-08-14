@@ -1,5 +1,7 @@
 /*!
-  * Bootstrap Content Templates v2.0.0
+  * Bootstrap Content Templates (master)
+  * Matrix 6: 2.0.0 (tag)
+  * Matrix 5: matrix5 (branch)
   */
 
 /* global bctInit */
@@ -11,8 +13,8 @@ var bctCssFontawesome =   'https://use.fontawesome.com/releases/v5.5.0/css/all.c
 var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@2.0.0/dist/bct.min.js';
 
 //matrix 5
-var m5_bctCssMin =       'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.7/dist/bct.min.css';
-var m5_bctJsMin =        'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.7/dist/bct.min.js';
+var m5_bctCssMin =       'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@matrix5/dist/bct.min.css';
+var m5_bctJsMin =        'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@matrix5/dist/bct.min.js';
 
 //check what version of matrix we are in
 if(document.head.querySelector('link[href*="/frontend/dist/css/main.min.css"]')){
