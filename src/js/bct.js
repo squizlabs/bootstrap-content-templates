@@ -83,7 +83,7 @@ function bctIniTabs(theWrapper){
       //add the markup for the nav
       $tabs.prepend('\
           <div class="mbs">\
-              <ul class="nav nav-tabs m-0 p-2 pb-0 border-0">\
+              <ul class="nav nav-tabs m-0 pt-2 px-2 pb-0 border-0">\
               </ul>\
           </div>\
       ');
@@ -94,7 +94,7 @@ function bctIniTabs(theWrapper){
           var name = $(this).data('name');
           $nav.append('\
               <li class="nav-item">\
-                  <a class="nav-link '+ ($(this).hasClass('active') ? 'active' : '') +'" data-toggle="tab" id="tab'+ i + '-' + assetId + '" href="#panel'+ i +'-'+ assetId +'">'+ name +'</a>\
+                  <a class="nav-link text-decoration-none '+ ($(this).hasClass('active') ? 'active' : '') +'" data-toggle="tab" id="tab'+ i + '-' + assetId + '" href="#panel'+ i +'-'+ assetId +'">'+ name +'</a>\
                </li>\
           ');
           $(this).attr('id','panel'+ i +'-'+ assetId);
