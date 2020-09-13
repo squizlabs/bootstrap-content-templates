@@ -134,6 +134,8 @@ function bctOpenMetadataPanel(assetId){
   //set active metadata panel state in the body tag
   $('body').addClass('bct-metadata-open');
   $('body').attr('data-open-metadata', assetId);
+  //add open class to parent wrapping sq-bodycopy-container-wrapper div
+  $('.sq-bodycopy-container-wrapper[data-containerid="'+ assetId +'"]').addClass('bct-metadata-panel-open');
 }
 
 //function for closing the metadata sidepanel
@@ -144,6 +146,8 @@ function bctCloseMetadataPanel(assetId){
   //set state in body tag to indicate that no panels are open
   $('body').removeClass('bct-metadata-open');
   $('body').attr('data-open-metadata', '');
+  //remove panel open class from parent wrapping sq-bodycopy-container-wrapper div
+  $('.sq-bodycopy-container-wrapper[data-containerid="'+ assetId +'"]').removeClass('bct-metadata-panel-open');
 }
 
 //function for updating the component preview content when metadata is changed

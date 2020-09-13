@@ -7,9 +7,19 @@
   overflow: visible;
 }
 
+.sq-bodycopy-container-wrapper.bct-metadata-panel-open {
+  position: relative;
+  z-index: 1;
+}
+
 .bct-metadata .htmlarea-div img {
   max-width: 100%;
   height: auto;
+}
+
+/* Hide page builder side panel when bct metadata panel is open */
+body.bct-metadata-open .page-builder-side-bar {
+  display: none !important;
 }
 
 /* Bootstrap content template wrapper */
@@ -68,33 +78,66 @@
 
 /* Sidepanel wrapper */
 .bct-metadata {
+  font-family: "Open Sans";
+  font-size: 12.8px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #212529;
   opacity: 1;
   background-color: #fff;
   max-width: 400px;
   width: 400px;
   min-height: 300px;
   position: fixed;
-  right: -800px;
-  top: 98px;
+  right: -420px;
+  top: 0px;
   pointer-events: auto;
   cursor: auto;
   visibility: visible;
-  transition: right 0.3s;
+  transition: right 0.2s;
   overflow-x: hidden;
-  border-radius: 0.25rem;
+  border-radius: 0;
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 1px 12px 4px rgba(0, 0, 0, 0.12);
-  height: 85vh;
-  z-index: 2999;
+  height: 100%;
+  z-index: 9999;
   padding: 30px 0 30px;
 }
 
 .bct-metadata.open {
-  right: 51px;
+  right: 0px;
+}
+
+/* Page builder main panel alterations for the bct side panel */
+body .main-panel-wrapper {
+  transition: padding 0.2s ease 0s;
 }
 
 body.bct-metadata-open .main-panel-wrapper {
   padding-right: 300px;
   padding-left: 20px;
+}
+
+/* Inline edit body classes when side panel is open */
+body.inline-edit {
+  transition: padding-right 0.2s ease 0s;
+}
+
+body.bct-metadata-open.inline-edit {
+  padding-right: 400px !important;
+}
+
+/* Sidepanel table layout */
+.bct-metadata table[class*="sq-"] {
+  margin-bottom: 0;
+}
+
+.bct-metadata table td[class*="sq-"] {
+  border: none;
+}
+
+.bct-metadata .sq-backend-section-table td:not([class]) {
+  border: none;
+  padding: 0;
 }
 
 /* Sidepanel heading */
@@ -133,17 +176,17 @@ body.bct-metadata-open .main-panel-wrapper {
   right: -800px;
   z-index: 2001;
   margin-top: -45px;
-  transition: right 0.3s;
+  transition: right 0.2s;
 }
 
 .bct-metadata.open .bct-metadata-close {
-  right: 70px;
+  right: 20px;
   margin-top: -27px;
 }
 
 body.sq .sq-bodycopy-edit-wrapper {
   position: relative;
-  transition: left 0.3s;
+  transition: left 0.2s;
   left: 0;
 }
 
@@ -207,7 +250,8 @@ body.sq .sq-bodycopy-edit-wrapper {
   width: 100%;
 }
 
-.bct-metadata .sq-backend-section-heading {
+.bct-metadata .sq-backend-section-heading,
+.bct-metadata .sq-limbo-section-heading {
   background: #ececec;
   display: block;
   position: relative;
@@ -254,13 +298,18 @@ body.sq .bct-metadata .bct-tab-pane {
   max-width: 320px;
 }
 
+/* Asset picker */
 .bct-metadata .sq-asset-finder-wrapper {
-  width: 250px;
+  width: 280px;
 }
 
 .bct-metadata .sq-asset-finder-wrapper input.sq-form-field[type=text],
 .bct-metadata .asset-finder__inner-wrapper.sq-relative {
-  max-width: 280px;
+  max-width: 275px;
+}
+
+.bct-metadata .asset-finder__inner-wrapper .sq-asset-tag__asset-name {
+  width: 125px;
 }
 
 /* Multi related asset picker note */
@@ -272,6 +321,17 @@ body.sq .bct-metadata .bct-tab-pane {
 
 .bct-metadata [id*='restrict_roots_set'] .sq-list-unstyled {
   padding-top: 5px;
+}
+
+/* Metadata settings and description */
+.bct-metadata .sq-metadata-settings-wrapper {
+  display: none;
+}
+
+.bct-metadata .sq-metadata-description {
+  font-weight: 400;
+  font-size: 0.9em;
+  margin-top: 2px;
 }
 
 /* ICON PICKER
