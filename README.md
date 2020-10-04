@@ -265,3 +265,5 @@ Anyone is welcome to contribute bug fixes, features, and improvements.
 The code is available under the [MIT license](LICENSE).
 
 This repo is based on [https://github.com/ericalli/static-site-boilerplate](https://github.com/ericalli/static-site-boilerplate).
+
+
