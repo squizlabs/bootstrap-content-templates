@@ -90,8 +90,8 @@ body.bct-metadata-open .page-builder-side-bar {
   min-height: 300px;
   position: fixed;
   right: -420px;
-  top: 110px;
-  height: calc(100% - 110px);
+  top: 0px;
+  height: 100%;
   pointer-events: auto;
   cursor: auto;
   visibility: visible;
