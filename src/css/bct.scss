@@ -103,6 +103,12 @@ body.bct-metadata-open .page-builder-side-bar {
   padding: 30px 0 30px;
 }
 
+/* 6.3 */
+.v6-3.bct-metadata {
+  top: 110px;
+  height: calc(100% - 110px);
+}
+
 .bct-metadata.open {
   right: 0px;
 }
@@ -182,6 +188,11 @@ body.bct-metadata-open.inline-edit {
 .bct-metadata.open .bct-metadata-close {
   right: 20px;
   margin-top: -27px;
+}
+
+.bct-metadata-close .icon {
+  width: 24px;
+  height: 24px;
 }
 
 body.sq .sq-bodycopy-edit-wrapper {

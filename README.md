@@ -33,7 +33,7 @@ This means any files in the repo are accessible via the [jsDelivr CDN](https://w
 
 For example, to load the latest version of the loader script you can use:
 
-https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/dist/bct-loader.js
+https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates/dist/bct-loader.js
 
 ### Local files
 
