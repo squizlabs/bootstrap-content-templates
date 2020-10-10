@@ -90,8 +90,8 @@ body.bct-metadata-open .page-builder-side-bar {
   min-height: 300px;
   position: fixed;
   right: -420px;
-  top: 0px;
-  height: 100%;
+  top: 110px;
+  height: calc(100% - 110px);
   pointer-events: auto;
   cursor: auto;
   visibility: visible;
@@ -103,14 +103,14 @@ body.bct-metadata-open .page-builder-side-bar {
   padding: 30px 0 30px;
 }
 
-/* 6.3 */
-.v6-3.bct-metadata {
-  top: 110px;
-  height: calc(100% - 110px);
-}
-
 .bct-metadata.open {
   right: 0px;
+}
+
+/* Inline edit adjustments */
+body.inline-edit .bct-metadata {
+  top: 0px;
+  height: 100%;
 }
 
 /* Page builder main panel alterations for the bct side panel */
@@ -160,6 +160,7 @@ body.bct-metadata-open.inline-edit {
   padding: 11px 15px 11px 15px;
   margin-bottom: 0px;
   width: 100%;
+  font-size: 18px;
 }
 
 .bct-metadata #ees_editMetadata > h3::after {

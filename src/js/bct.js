@@ -43,7 +43,6 @@ function bctInit(theWrapper) { // eslint-disable-line no-unused-vars
   $bctMetadata.find('.htmlarea-div').each(function(){
       var $wysiwyg = $(this);
       $wysiwyg.on('keydown change blur focus', function() {
-          console.log($wysiwyg.attr('id'));
           bctUpdateComponent(this);
       });
   });
