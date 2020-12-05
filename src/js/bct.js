@@ -3,6 +3,9 @@ function bctInit(theWrapper) { // eslint-disable-line no-unused-vars
   var $bctWrapper = $(theWrapper);
   var assetId = $bctWrapper.data('asset-id');
   var $bctMetadata = $($bctWrapper.find('.bct-metadata'));
+  //add matrix inline editing class to metadata panel
+  $bctMetadata.addClass('matrix-inline-editing-styles');
+  //remove the display:none
   $bctMetadata.show();
 
   //add metadata toggle button
@@ -125,6 +128,8 @@ function bctToggleMetadataPanel(assetId) { // eslint-disable-line no-unused-vars
 
 //function for opening the metadata sidepanel
 function bctOpenMetadataPanel(assetId){
+  //close the matrix native sidepanel incase it's open
+  $('.sidebar-panel-header > button').trigger('click');
   //remove open class from any other metadata panels
   $('.bct-wrapper').not('#bct-wrapper-'+assetId).find('.bct-metadata').removeClass('open');
   //add the open class to the clicked metadata panel (this opens it)

@@ -12,6 +12,10 @@
   z-index: 1;
 }
 
+body.inline-edit .sq-bodycopy-container-wrapper.bct-metadata-panel-open {
+  z-index: 9999;
+}
+
 .bct-metadata .htmlarea-div img {
   max-width: 100%;
   height: auto;
@@ -90,8 +94,8 @@ body.bct-metadata-open .page-builder-side-bar {
   min-height: 300px;
   position: fixed;
   right: -420px;
-  top: 110px;
-  height: calc(100% - 110px);
+  top: 118px;
+  height: calc(100% - 126px);
   pointer-events: auto;
   cursor: auto;
   visibility: visible;
@@ -104,32 +108,39 @@ body.bct-metadata-open .page-builder-side-bar {
 }
 
 .bct-metadata.open {
-  right: 0px;
+  right: 50px;
+}
+
+/* Page builder main panel alterations for the bct side panel */
+body .main-panel-wrapper.contents-screen {
+  transition: padding 0.2s ease 0s;
+}
+
+body.bct-metadata-open .main-panel-wrapper.contents-screen {
+  padding-right: 300px;
+  padding-left: 20px;
 }
 
 /* Inline edit adjustments */
+body.inline-edit {
+  transition: padding-right 0.2s ease 0s;
+}
+
 body.inline-edit .bct-metadata {
   top: 0px;
   height: 100%;
 }
 
-/* Page builder main panel alterations for the bct side panel */
-body .main-panel-wrapper {
-  transition: padding 0.2s ease 0s;
-}
-
-body.bct-metadata-open .main-panel-wrapper {
-  padding-right: 300px;
-  padding-left: 20px;
-}
-
-/* Inline edit body classes when side panel is open */
-body.inline-edit {
-  transition: padding-right 0.2s ease 0s;
+body.inline-edit .bct-metadata.open {
+  right: 0px;
 }
 
 body.bct-metadata-open.inline-edit {
   padding-right: 400px !important;
+}
+
+body.bct-metadata-open.inline-edit .bct-metadata-close {
+  right: 20px;
 }
 
 /* Sidepanel table layout */
@@ -151,7 +162,7 @@ body.bct-metadata-open.inline-edit {
   position: fixed;
   z-index: 1000;
   background: #fff;
-  width: 100%;
+  width: 400px;
   margin-top: -31px;
   border-radius: .25rem;
 }
@@ -168,11 +179,11 @@ body.bct-metadata-open.inline-edit {
   top: auto;
   right: 0;
   bottom: 0;
-  left: -30px;
+  left: 0px;
   content: '';
   height: 1px;
   background-color: #e0e0e0;
-  width: calc(100% - 2rem);
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -187,7 +198,7 @@ body.bct-metadata-open.inline-edit {
 }
 
 .bct-metadata.open .bct-metadata-close {
-  right: 20px;
+  right: 70px;
   margin-top: -27px;
 }
 
