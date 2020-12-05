@@ -370,7 +370,8 @@ body .iconpicker .iconpicker-item {
   padding: 8px 0 0;
 }
 
-.iconpicker-input + .in.bottom {
+.iconpicker-input + .in.bottom,
+.iconpicker-input + div + .in.bottom {
   left: 0 !important;
 }
 
