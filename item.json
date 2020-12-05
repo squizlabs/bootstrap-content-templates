@@ -3,7 +3,7 @@
     "download":         "https://gitlab.squiz.net/marketplace/internal/bootstrap-content-templates#installation",
     "repo":             "https://gitlab.squiz.net/marketplace/internal/bootstrap-content-templates",
     "description":      "An extension for Squiz Matrix that enables the ability to easily create enhanced and more user intuitive Content Templates using Bootstrap 4 and FontAwesome 5.",
-    "version":          "1.0.1",
+    "version":          "2.0.6",
     "owner":            "@bbanda",
     "product_versions": {
         "matrix":       "5.5.0.0"
