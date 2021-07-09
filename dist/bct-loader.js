@@ -1,6 +1,6 @@
 /*!
   * Bootstrap Content Templates (master)
-  * Matrix 6: 2.0.8 (tag)
+  * Matrix 6: 2.0.9 (tag)
   * Matrix 5: 1.0.8 (tag)
   */
 
