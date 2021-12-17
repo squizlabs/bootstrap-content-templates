@@ -325,7 +325,7 @@ body.sq .bct-metadata .bct-tab-pane {
 
 /* Asset picker */
 .bct-metadata .sq-asset-finder-wrapper {
-  width: 280px;
+  width: 350px;
 }
 
 .bct-metadata .sq-asset-finder-wrapper input.sq-form-field[type=text],
@@ -335,6 +335,12 @@ body.sq .bct-metadata .bct-tab-pane {
 
 .bct-metadata .asset-finder__inner-wrapper .sq-asset-tag__asset-name {
   width: 125px;
+  min-width: 118px;
+}
+
+.sq-asset-finder-wrapper .sq-asset-tag .sq-asset-tag__asset-id-wrapper {
+  min-width: 2.5rem;
+  font-size: 11px;
 }
 
 /* Multi related asset picker note */
