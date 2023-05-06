@@ -73,7 +73,7 @@
     "clear": "^0.1.0",
     "enquirer": "^2.3.6",
     "figlet": "^1.5.0",
-    "ftp-deploy": "^2.3.7",
+    "ftp-deploy": "^2.4.3",
     "jquery": "^3.5.1",
     "normalize.css": "^8.0.1",
     "reset-css": "^4.0.1",
