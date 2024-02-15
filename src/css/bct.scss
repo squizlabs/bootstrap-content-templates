@@ -355,7 +355,7 @@ body.sq .bct-metadata .bct-tab-pane {
 }
 
 /* Metadata settings and description */
-.bct-metadata .sq-metadata-settings-wrapper {
+.bct-metadata .sq-metadata-settings-wrapper:not(:has(span.sq-metadata-default-wrapper)) {
   display: none;
 }
 
