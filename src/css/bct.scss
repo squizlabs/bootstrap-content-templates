@@ -359,6 +359,15 @@ body.sq .bct-metadata .bct-tab-pane {
   display: none;
 }
 
+/* fix layout for 'use default' on BCT drawer */
+.bct-metadata .sq-metadata-settings-wrapper {
+  margin-bottom: 4px;
+}
+
+.bct-metadata .sq-metadata-wrapper {
+  flex-direction: column;
+}
+
 .bct-metadata .sq-metadata-description {
   font-weight: 400;
   font-size: 0.9em;

@@ -1,6 +1,6 @@
 /*!
   * Bootstrap Content Templates (master)
-  * Matrix 6: 2.0.13 (tag)
+  * Matrix 6: 2.0.14 (tag)
   * Matrix 5: 1.0.8 (tag)
   */
 
@@ -8,9 +8,9 @@
 
 //bct plugin vars
 var matrixVersion = 6;
-var bctCssMin =           'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@2.0.13/dist/bct.min.css';
+var bctCssMin =           'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@2.0.14/dist/bct.min.css';
 var bctCssFontawesome =   'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
-var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@2.0.13/dist/bct.min.js';
+var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@2.0.14/dist/bct.min.js';
 
 //matrix 5
 var m5_bctCssMin =       'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.8/dist/bct.min.css';
