@@ -3,6 +3,9 @@ function bctInit(theWrapper) { // eslint-disable-line no-unused-vars
   var $bctWrapper = $(theWrapper);
   var assetId = $bctWrapper.data('asset-id');
   var $bctMetadata = $($bctWrapper.find('.bct-metadata'));
+  //add matrix inline editing class to metadata panel
+  $bctMetadata.addClass('matrix-inline-editing-styles');
+  //remove the display:none
   $bctMetadata.show();
 
   //add metadata toggle button
@@ -43,7 +46,6 @@ function bctInit(theWrapper) { // eslint-disable-line no-unused-vars
   $bctMetadata.find('.htmlarea-div').each(function(){
       var $wysiwyg = $(this);
       $wysiwyg.on('keydown change blur focus', function() {
-          console.log($wysiwyg.attr('id'));
           bctUpdateComponent(this);
       });
   });
@@ -126,6 +128,8 @@ function bctToggleMetadataPanel(assetId) { // eslint-disable-line no-unused-vars
 
 //function for opening the metadata sidepanel
 function bctOpenMetadataPanel(assetId){
+  //close the matrix native sidepanel incase it's open
+  $('.sidebar-panel-header > button').trigger('click');
   //remove open class from any other metadata panels
   $('.bct-wrapper').not('#bct-wrapper-'+assetId).find('.bct-metadata').removeClass('open');
   //add the open class to the clicked metadata panel (this opens it)
@@ -134,6 +138,8 @@ function bctOpenMetadataPanel(assetId){
   //set active metadata panel state in the body tag
   $('body').addClass('bct-metadata-open');
   $('body').attr('data-open-metadata', assetId);
+  //add open class to parent wrapping sq-bodycopy-container-wrapper div
+  $('.sq-bodycopy-container-wrapper[data-containerid="'+ assetId +'"]').addClass('bct-metadata-panel-open');
 }
 
 //function for closing the metadata sidepanel
@@ -144,6 +150,8 @@ function bctCloseMetadataPanel(assetId){
   //set state in body tag to indicate that no panels are open
   $('body').removeClass('bct-metadata-open');
   $('body').attr('data-open-metadata', '');
+  //remove panel open class from parent wrapping sq-bodycopy-container-wrapper div
+  $('.sq-bodycopy-container-wrapper[data-containerid="'+ assetId +'"]').removeClass('bct-metadata-panel-open');
 }
 
 //function for updating the component preview content when metadata is changed

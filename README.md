@@ -33,7 +33,7 @@ This means any files in the repo are accessible via the [jsDelivr CDN](https://w
 
 For example, to load the latest version of the loader script you can use:
 
-https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/dist/bct-loader.js
+https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates/dist/bct-loader.js
 
 ### Local files
 
@@ -51,16 +51,42 @@ var bctJsMin = 'path/to/bct.min.js';
 In order to use this extension on a CT, simply include the `bct-loader.js` file to the end of your SEL:
 
 ```html
-<script src="/path/to/bct-loader.js"></script>
+<script>
+!function(){if(window.runBct)runBct();else{const t=document.createElement(`script`);
+t.src=`/path/to/bct-loader.js`,
+document.head.appendChild(t)}}();
+</script>
 ```
 
 This will automatically load the following libraries into your Admin or Edit+ interface when this CT is used on a page:
 
+- jQuery 3.6.0 (if not already available)
 - Bootstrap 4.4.1 
 - Font Awesome 5.5.0
 - BCT core CSS & JS
 
 The loader script will ensure that these additional CSS and JS files are only loaded once, so it's fine if you have multiple CTs on a page that all reference the same loader script.
+
+## Recommended usage
+The recommended way to use the BCT plugin is to use the latest CDN version and have a single place where you are referencing the BCT loading script.
+
+For example, create a standard page with a single component set to code. Inside that code area, add the script to load the CDN version of the plugin:
+
+```html
+<script>
+!function(){if(window.runBct)runBct();else{const t=document.createElement(`script`);
+t.src=`https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates/dist/bct-loader.js`,
+document.head.appendChild(t)}}();
+</script>
+```
+
+Then at the bottom of your SEL, simply use a global keyword to nest the code from the standard page:
+
+```html
+%globals_asset_contents_raw:<asset ID of standard page>%
+```
+
+That way, you can use the exact same reference on any custom component you choose to use it on and update the BCT loading script in a single place.
 
 ### Using Bootstrap classes
 
@@ -265,3 +291,5 @@ Anyone is welcome to contribute bug fixes, features, and improvements.
 The code is available under the [MIT license](LICENSE).
 
 This repo is based on [https://github.com/ericalli/static-site-boilerplate](https://github.com/ericalli/static-site-boilerplate).
+
+

@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-content-templates",
   "description": "An extension for Squiz Matrix to enable Bootstrap based Content Templates.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://matrix.squiz.net/",
   "author": {
     "name": "Bart Banda",
@@ -79,5 +79,8 @@
     "reset-css": "^4.0.1",
     "sanitize.css": "^11.0.1",
     "webpack-dev-server": "^3.11.0"
+  },
+  "volta": {
+    "node": "12.22.12"
   }
 }

@@ -1,19 +1,45 @@
+/*!
+  * Bootstrap Content Templates (master)
+  * Matrix 6: 2.0.0 (tag)
+  * Matrix 5: 1.0.8 (tag)
+  */
+
 /* global bctInit */
 
 //bct plugin vars
 var matrixVersion = 6;
+
+//var bctCssMin =           'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@2.0.0/dist/bct.min.css';
+//var bctCssFontawesome =   'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
+//var bctJsMin =            'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@2.0.0/dist/bct.min.js';
+
 var bctCssBootstrap =               'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/css/matrix-bootstrap.min.css';
 var bctCssFontawesome =             'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
 var bctCssFontawesomeIconPicker =   'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@master/src/css/fontawesome-iconpicker.css';
-var bctCssMain =                    '/__data/assets/css_file/0026/5858/bct-m6.css?v='+Math.random();
+var bctCssMin =                     'https://feature1.php73.matrixuat.squiz.net/__data/assets/css_file/0026/5858/bct.css?v='+Math.random();
 var bctJsBootstrap =                'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/js/matrix-bootstrap.min.js';
 var bctJsFontawesomeIconPicker =    'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@latest/src/js/fontawesome-iconpicker.js';
-var bctJsMain =                     '/__data/assets/js_file/0027/5859/bct-m6.js?v='+Math.random();
+var bctJsMin =                      'https://feature1.php73.matrixuat.squiz.net/__data/assets/js_file/0027/5859/bct.js?v='+Math.random();
 
 //matrix 5
-var m5_bctCssMain =                  '/__data/assets/css_file/0026/5858/bct-m6.css?v='+Math.random();
-var m5_bctJsMain =                   '/__data/assets/js_file/0027/5859/bct-m6.js?v='+Math.random();
+var m5_bctCssMin =       'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.8/dist/bct.min.css';
+var m5_bctJsMin =        'https://cdn.jsdelivr.net/gh/squizlabs/bootstrap-content-templates@1.0.8/dist/bct.min.js';
 
+//check what version of matrix we are in
+if(document.head.querySelectorAll('link[href*="__lib/web/css/reset.css"], link[href*="__data/ees/easyedit.min.css"]').length){
+    //matrix 5
+    matrixVersion = 5;
+    bctCssMin = m5_bctCssMin;
+    bctJsMin = m5_bctJsMin;
+}else{
+    //matrix 6
+}
+$('body').addClass('matrix' + matrixVersion);
+
+//check if we are in inline edit
+if(window.location.href.indexOf('/_edit') > -1){
+    $('body').addClass('inline-edit');
+}
 
 //function for initialising the bct plugin
 function iniBctWrappers(){
@@ -28,30 +54,18 @@ function iniBctWrappers(){
 //load the required CSS and JS into the head if we haven't done it yet
 if(!$('body').hasClass('bct-files-loaded')){
 
-    //check what version of matrix we are in
-    if(document.head.querySelector('link[href*="/frontend/dist/css/main.min.css"]')){
-      //matrix 6
-      matrixVersion = 6;
-    }else{
-      //matrix 5
-      matrixVersion = 5;
-      bctCssMin = m5_bctCssMin;
-      bctJsMin = m5_bctJsMin;
-    }
-    $('body').addClass('matrix' + matrixVersion);
-
     //load the CSS files
     document.head.insertAdjacentHTML('beforeend', '\
         <link rel="stylesheet" href="'+ bctCssBootstrap +'">\
         <link rel="stylesheet" href="'+ bctCssFontawesome +'" id="fa_stylesheet">\
         <link rel="stylesheet" href="'+ bctCssFontawesomeIconPicker +'">\
-        <link rel="stylesheet" href="'+ bctCssMain +'">\
+        <link rel="stylesheet" href="'+ bctCssMin +'">\
     ');
 
     //load the JS files
     $.getScript(bctJsBootstrap);
     $.getScript(bctJsFontawesomeIconPicker);
-    $.getScript(bctJsMain)
+    $.getScript(bctJsMin)
         .done(function() {
             setTimeout(function(){
                 iniBctWrappers();
@@ -69,11 +83,10 @@ if(!$('body').hasClass('bct-files-loaded')){
         //if we are in admin mode, we need to reload some of the scripts
         if(!$('#main_form').hasClass('bct-admin-loaded')){
             //in admin we need to reload this CSS file into the body tag because of a weird bug
-            document.body.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="'+ bctCssMain +'?v='+Math.random()+'+">');
+            document.body.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="'+ bctCssMin +'">');
             //reload the JS files using a promise, when all are completed, we can call the bct ini function again
             $.when(
-                $.getScript(bctJsBootstrap),
-                $.getScript(bctJsFontawesomeIconPicker),
+                $.getScript(bctJsMin),
                 $.Deferred(function( deferred ){
                     $( deferred.resolve );
                 }),
@@ -92,5 +105,6 @@ if(!$('body').hasClass('bct-files-loaded')){
         }, 100);
     }
 }
+
 
 
